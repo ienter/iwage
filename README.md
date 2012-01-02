@@ -1,3 +1,3 @@
 ### IWAGE
 
-Copyright (c) 2011 Ienter (see LICENSE)
+Copyright (c) 2011 <a href="http://ienter.net">Ienter</a> (see LICENSE)
