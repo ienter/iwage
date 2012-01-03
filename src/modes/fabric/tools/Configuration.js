@@ -10,7 +10,7 @@ Ext.define('iwage.fabric.tools.Configuration', {
             {
                 xtype: 'numberfield',
                 itemId: 'height',
-                value:  app(iwage.MODES.FABRIC).topo.getHeight(),
+                value:  iwage(iwage.MODES.FABRIC).topo.getHeight(),
                 fieldLabel: 'Alto',
                 minValue: 0,
                 allowDecimals: false,
@@ -19,7 +19,7 @@ Ext.define('iwage.fabric.tools.Configuration', {
             {
                 xtype: 'numberfield',
                 itemId: 'width',
-                value:  app(iwage.MODES.FABRIC).topo.getWidth(),
+                value:  iwage(iwage.MODES.FABRIC).topo.getWidth(),
                 fieldLabel: 'Ancho',
                 minValue: 0,
                 allowDecimals: false,
@@ -34,8 +34,8 @@ Ext.define('iwage.fabric.tools.Configuration', {
 
         // TODO mover a iwage.fabric y centrar
 
-        app(iwage.MODES.FABRIC).topo.setHeight(values.height);
-        app(iwage.MODES.FABRIC).topo.setWidth(values.width);
+        iwage(iwage.MODES.FABRIC).topo.setHeight(values.height);
+        iwage(iwage.MODES.FABRIC).topo.setWidth(values.width);
 
         iwage.view.centerContainer();
     }

@@ -50,7 +50,7 @@ Ext.define('iwage.fabric.tools.EditImage', {
     },
     editSelection: function() {
         // TODO mover
-        var active = app(iwage.MODES.FABRIC).topo.getActive();
+        var active = iwage(iwage.MODES.FABRIC).topo.getActive();
 
         if (!active) {
             return;
@@ -59,14 +59,14 @@ Ext.define('iwage.fabric.tools.EditImage', {
         iwage.set('editing_fabric_as_image', true);
 
         active.clone(function(clone) {
-            app(iwage.MODES.FABRIC).imageHolder = clone;
+            iwage(iwage.MODES.FABRIC).imageHolder = clone;
 
             active.set('angle', 0);
 
             active.toDataURL(function(dataUri) {
                 iwage.setMode(iwage.MODES.IMAGE);
                 iwage.file.set(dataUri);
-                app(iwage.MODES.FABRIC).topo.remove(active);
+                iwage(iwage.MODES.FABRIC).topo.remove(active);
             });
         });
     }

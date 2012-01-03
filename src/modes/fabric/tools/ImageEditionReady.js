@@ -38,8 +38,8 @@ Ext.define('iwage.fabric.tools.ImageEditionReady', {
         this.show();
     },
     applyTool: function() {
-        app(iwage.MODES.IMAGE).file.set(
-            app().file.getDataUri()
+        iwage(iwage.MODES.IMAGE).file.set(
+            iwage().file.getDataUri()
         );
 
         iwage.unset('editing_image_as_fabric')

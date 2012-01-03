@@ -10,11 +10,11 @@ Ext.define('iwage.fabric.tools.Static', {
 
         try {
             if (itemId != 'angle') {
-                app(iwage.MODES.FABRIC).topo.getActive().set(itemId, value);
+                iwage(iwage.MODES.FABRIC).topo.getActive().set(itemId, value);
             } else {
-                app(iwage.MODES.FABRIC).topo.getActive().setAngle(value);
+                iwage(iwage.MODES.FABRIC).topo.getActive().setAngle(value);
             }
-            app(iwage.MODES.FABRIC).topo.refresh();
+            iwage(iwage.MODES.FABRIC).topo.refresh();
         } catch(e) {
             iwage.log(e);
         }

@@ -35,7 +35,7 @@ iwage.view.toolLauncher.getImageEditorTools = function () {
             hidden: iwage.getMode() == iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('hide', 'show'),
             handler: function () {
-                app(iwage.MODES.IMAGE).transform.rotateMinus90();
+                iwage(iwage.MODES.IMAGE).transform.rotateMinus90();
             }
         },
         {
@@ -44,7 +44,7 @@ iwage.view.toolLauncher.getImageEditorTools = function () {
             hidden: iwage.getMode() == iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('hide', 'show'),
             handler: function () {
-                app(iwage.MODES.IMAGE).transform.rotate90();
+                iwage(iwage.MODES.IMAGE).transform.rotate90();
             }
         },
         {
@@ -53,7 +53,7 @@ iwage.view.toolLauncher.getImageEditorTools = function () {
             hidden: iwage.getMode() == iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('hide', 'show'),
             handler: function () {
-                app(iwage.MODES.IMAGE).transform.translateHorizontal();
+                iwage(iwage.MODES.IMAGE).transform.translateHorizontal();
             }
         },
         {
@@ -62,7 +62,7 @@ iwage.view.toolLauncher.getImageEditorTools = function () {
             hidden: iwage.getMode() == iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('hide', 'show'),
             handler: function () {
-                app(iwage.MODES.IMAGE).transform.translateVertical();
+                iwage(iwage.MODES.IMAGE).transform.translateVertical();
             }
         },
         {
@@ -90,21 +90,21 @@ iwage.view.toolLauncher.getFabricTools = function () {
             tooltip: 'Copiar',
             hidden: iwage.getMode() != iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('show', 'hide'),
-            handler: app(iwage.MODES.FABRIC).copy
+            handler: iwage(iwage.MODES.FABRIC).copy
         },
         {
             icon: iwage.icon('paste'),
             tooltip: 'Pegar',
             hidden: iwage.getMode() != iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('show', 'hide'),
-            handler: app(iwage.MODES.FABRIC).paste
+            handler: iwage(iwage.MODES.FABRIC).paste
         },
         {
             icon: iwage.icon('delete_cross'),
             tooltip: 'Eliminar seleccion actual',
             hidden: iwage.getMode() != iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('show', 'hide'),
-            handler: app(iwage.MODES.FABRIC).removeActive
+            handler: iwage(iwage.MODES.FABRIC).removeActive
         },
         {
             xtype: 'tbseparator',
@@ -142,28 +142,28 @@ iwage.view.toolLauncher.getFabricTools = function () {
             tooltip: 'Agregar linea',
             hidden: iwage.getMode() != iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('show', 'hide'),
-            handler: app(iwage.MODES.FABRIC).addLine
+            handler: iwage(iwage.MODES.FABRIC).addLine
         },
         {
             icon: iwage.icon('rect'),
             tooltip: 'Agregar rectangulo',
             hidden: iwage.getMode() != iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('show', 'hide'),
-            handler: app(iwage.MODES.FABRIC).addRect
+            handler: iwage(iwage.MODES.FABRIC).addRect
         },
         {
             icon: iwage.icon('triangle'),
             tooltip: 'Agregar triangulo',
             hidden: iwage.getMode() != iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('show', 'hide'),
-            handler: app(iwage.MODES.FABRIC).addTriangle
+            handler: iwage(iwage.MODES.FABRIC).addTriangle
         },
         {
             icon: iwage.icon('circle'),
             tooltip: 'Agregar circulo',
             hidden: iwage.getMode() != iwage.MODES.FABRIC,
             listeners: iwage.util.listenersForMode('show', 'hide'),
-            handler: app(iwage.MODES.FABRIC).addCircle
+            handler: iwage(iwage.MODES.FABRIC).addCircle
         }
     ]
 }

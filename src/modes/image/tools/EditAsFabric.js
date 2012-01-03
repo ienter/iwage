@@ -38,9 +38,9 @@ Ext.define('iwage.image.tools.EditAsFabric', {
     // TODO mover logica a donde corresponda
     editSelection: function() {
         var dataUri = iwage.file.getDataUri();
-        var topo = app(iwage.MODES.FABRIC).topo;
+        var topo = iwage(iwage.MODES.FABRIC).topo;
 
-        app(iwage.MODES.FABRIC).clear();
+        iwage(iwage.MODES.FABRIC).clear();
 
         iwage.set('editing_image_as_fabric', true);
 

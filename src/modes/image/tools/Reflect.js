@@ -59,7 +59,7 @@ Ext.define('iwage.image.tools.Reflect', {
             $('.result').height() * modifier
         );
 
-        $(app().utils.reflect($('.result').get(0), modifier, transition))
+        $(iwage().utils.reflect($('.result').get(0), modifier, transition))
             .addClass('result')
             .addClass('rounded')
             .appendTo($('.result').parent());

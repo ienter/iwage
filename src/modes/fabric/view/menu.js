@@ -1,4 +1,4 @@
-app(iwage.MODES.FABRIC).view.menu = {
+iwage(iwage.MODES.FABRIC).view.menu = {
     createFileMenu: function() {
         return {
             text: 'Archivo',
@@ -19,14 +19,14 @@ app(iwage.MODES.FABRIC).view.menu = {
                         text: 'Previsualizar',
                         icon: iwage.icon('preview'),
                         handler: function() {
-                            app(iwage.MODES.FABRIC).preview();
+                            iwage(iwage.MODES.FABRIC).preview();
                         }
                     },
                     {
                         text: 'Instalar',
                         icon: iwage.icon('tick'),
                         handler: function() {
-                            app(iwage.MODES.FABRIC).install();
+                            iwage(iwage.MODES.FABRIC).install();
                         }
                     },
                     {
@@ -90,7 +90,7 @@ app(iwage.MODES.FABRIC).view.menu = {
     create: function() {
         var menu, self;
 
-        self = app(iwage.MODES.FABRIC).view.menu;
+        self = iwage(iwage.MODES.FABRIC).view.menu;
 
         menu = [];
 

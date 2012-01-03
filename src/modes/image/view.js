@@ -1,4 +1,4 @@
-app(iwage.MODES.IMAGE).view = {
+iwage(iwage.MODES.IMAGE).view = {
     getHTML: function() {
         return '<div class="placeholder result-container" style="display: none"><div id="container">' +
             '<img class="result"' +
@@ -6,7 +6,7 @@ app(iwage.MODES.IMAGE).view = {
             '<div id="nubs"></div></div></div><div id="history-undo"></div><div id="history-redo">';
     },
     setZoom: function(level) {
-        app().view._zoom = level;
+        iwage().view._zoom = level;
 
         level = level / 100;
 
@@ -17,12 +17,12 @@ app(iwage.MODES.IMAGE).view = {
         });
     },
     getZoom: function() {
-        return app().view._zoom || 100;
+        return iwage().view._zoom || 100;
     },
     restoreZoom: function() {
-        app().view.setZoom(app().view.getZoom() || 100);
+        iwage().view.setZoom(iwage().view.getZoom() || 100);
     },
     clearZoom: function() {
-        app().view.setZoom(100);
+        iwage().view.setZoom(100);
     }
 };

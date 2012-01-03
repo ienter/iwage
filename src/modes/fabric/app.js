@@ -56,7 +56,7 @@
     };
 
     fabricMode.clear = function() {
-        var canvas = app(iwage.MODES.FABRIC).topo.canvas;
+        var canvas = iwage(iwage.MODES.FABRIC).topo.canvas;
 
         var obj;
         while (obj = canvas.item(0)) {

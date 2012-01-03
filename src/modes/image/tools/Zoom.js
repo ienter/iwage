@@ -9,7 +9,7 @@ Ext.define('iwage.image.tools.Zoom', {
             text: 'Tama&ntilde;o orignal',
             icon: iwage.icon('search'),
             handler: function () {
-                app().view.setZoom(100);
+                iwage().view.setZoom(100);
 
                 this.getComponent().down('#zoom').setValue(100);
             }
@@ -24,7 +24,7 @@ Ext.define('iwage.image.tools.Zoom', {
                 fieldLabel: 'Nivel',
                 itemId: 'zoom',
                 width: 250,
-                value: app().view.getZoom(),
+                value: iwage().view.getZoom(),
                 minValue: 0,
                 maxValue: 250,
                 useTips: true,
@@ -46,7 +46,7 @@ Ext.define('iwage.image.tools.Zoom', {
             return;
         }
 
-        app().view.setZoom(values.zoom);
+        iwage().view.setZoom(values.zoom);
     },
     constructor: function (options) {
         var self = this;

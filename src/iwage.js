@@ -1,4 +1,4 @@
-function app() {
+function iwage() {
     var args = arguments;
 
     if (!arguments.length) {
@@ -83,7 +83,7 @@ iwage.path = function(path, root) {
     var parts, i, l;
 
     parts = path.split('.');
-    root = root || app();
+    root = root || iwage();
 
     for (i = 0,l = parts.length; i < l; i++) {
         if (!root[parts[i]]) {
@@ -184,7 +184,7 @@ iwage.mode = function(mode) {
 
 iwage.eachMode = function(fn) {
     Ext.iterate(iwage.MODES, function(mode) {
-        fn(app(mode));
+        fn(iwage(mode));
     });
 };
 

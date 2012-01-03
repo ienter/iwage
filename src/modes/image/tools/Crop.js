@@ -16,7 +16,7 @@ Ext.define('iwage.image.tools.Crop', {
     },
     use: function (options) {
 
-        app().view.setZoom(100);
+        iwage().view.setZoom(100);
         iwage.emit('app:zoom', 100);
 
         this.originalImage = new Image;

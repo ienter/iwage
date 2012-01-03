@@ -1,4 +1,4 @@
-app(iwage.MODES.IMAGE).view.menu = {
+iwage(iwage.MODES.IMAGE).view.menu = {
     createFileMenu: function () {
         return {
             text: 'Archivo',
@@ -89,28 +89,28 @@ app(iwage.MODES.IMAGE).view.menu = {
                         text: 'Rotar a la izquierda',
                         icon: iwage.icon('rotate_anticlockwise'),
                         handler: function () {
-                            app(iwage.MODES.IMAGE).transform.rotateMinus90();
+                            iwage(iwage.MODES.IMAGE).transform.rotateMinus90();
                         }
                     },
                     {
                         text: 'Rotar a la derecha',
                         icon: iwage.icon('rotate_clockwise'),
                         handler: function () {
-                            app(iwage.MODES.IMAGE).transform.rotate90();
+                            iwage(iwage.MODES.IMAGE).transform.rotate90();
                         }
                     },
                     {
                         text: 'Reflejar horizontalmente',
                         icon: iwage.icon('flip_horizontal'),
                         handler: function () {
-                            app(iwage.MODES.IMAGE).transform.translateHorizontal();
+                            iwage(iwage.MODES.IMAGE).transform.translateHorizontal();
                         }
                     },
                     {
                         text: 'Reflejar verticalmente',
                         icon: iwage.icon('flip_vertical'),
                         handler: function () {
-                            app(iwage.MODES.IMAGE).transform.translateVertical();
+                            iwage(iwage.MODES.IMAGE).transform.translateVertical();
                         }
                     },
                     '-',
@@ -196,7 +196,7 @@ app(iwage.MODES.IMAGE).view.menu = {
     create: function () {
         var menu, self;
 
-        self = app(iwage.MODES.IMAGE).view.menu;
+        self = iwage(iwage.MODES.IMAGE).view.menu;
 
         menu = [];
 

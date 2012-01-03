@@ -29,7 +29,7 @@ $(function() {
 
     iwage.key('del', function() {
         try {
-            app().removeActive();
+            iwage().removeActive();
         } catch(e) {
         }
     });

@@ -41,7 +41,7 @@ Ext.define('iwage.fabric.tools.Position', {
                         text: 'Traer al frente',
                         icon: iwage.icon('bring_front'),
                         handler:   function() {
-                            app(iwage.MODES.FABRIC).topo.toFront();
+                            iwage(iwage.MODES.FABRIC).topo.toFront();
                         }
                     },
                     {
@@ -51,7 +51,7 @@ Ext.define('iwage.fabric.tools.Position', {
                         text: 'Enviar al fondo',
                         icon: iwage.icon('send_back'),
                         handler:  function() {
-                            app(iwage.MODES.FABRIC).topo.toBack();
+                            iwage(iwage.MODES.FABRIC).topo.toBack();
                         }
                     }
                 ]

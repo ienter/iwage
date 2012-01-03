@@ -37,7 +37,7 @@ Ext.define('iwage.fabric.tools.Svg', {
     ],
     applyTool: function(svgPath) {
         try {
-            app(iwage.MODES.FABRIC).topo.svg(/imagen\/(.+)?\./.exec(svgPath)[1]);
+            iwage(iwage.MODES.FABRIC).topo.svg(/imagen\/(.+)?\./.exec(svgPath)[1]);
         } catch(e) {
         }
 

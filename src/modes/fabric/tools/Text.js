@@ -57,9 +57,9 @@ Ext.define('iwage.fabric.tools.Text', {
                 fontFamily: fontFamily
             });
 
-            app(iwage.MODES.FABRIC).topo.refresh();
+            iwage(iwage.MODES.FABRIC).topo.refresh();
         } else {
-            this.text = app(iwage.MODES.FABRIC).topo.text(text, {
+            this.text = iwage(iwage.MODES.FABRIC).topo.text(text, {
                 fontFamily: fontFamily
             });
         }

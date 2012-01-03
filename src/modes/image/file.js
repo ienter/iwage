@@ -96,7 +96,7 @@ iwage.mode(iwage.MODES.IMAGE).file = {
             return $('.result').attr('src');
         }
 
-        resized = app(iwage.MODES.IMAGE).utils.resize(
+        resized = iwage(iwage.MODES.IMAGE).utils.resize(
             $('.result').get(0),
             opts.width,
             opts.height

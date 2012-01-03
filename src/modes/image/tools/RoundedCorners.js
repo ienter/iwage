@@ -30,7 +30,7 @@ Ext.define('iwage.image.tools.RoundedCorners', {
         $('.result.rounded').remove();
 
         // Crear la imagen
-        $(app().utils.roundedCorners($('.result').get(0), values.level))
+        $(iwage().utils.roundedCorners($('.result').get(0), values.level))
             .addClass('result')
             .addClass('rounded')
             .appendTo($('.result').parent());

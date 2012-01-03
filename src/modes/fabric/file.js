@@ -12,7 +12,7 @@ iwage.mode(iwage.MODES.FABRIC).file = {
         iwage.fabric.topo.open(json);
     },
     save: function() {
-        var file = app(iwage.MODES.FABRIC).file;
+        var file = iwage(iwage.MODES.FABRIC).file;
 
         Ext.Msg.prompt('Guardar', 'Nombre del archivo:', function(btn, text) {
             if (btn == 'ok') {
@@ -62,8 +62,8 @@ iwage.mode(iwage.MODES.FABRIC).file = {
         var
             serialized,
             uri,
-            topo = app().topo,
-            file = app().file;
+            topo = iwage().topo,
+            file = iwage().file;
 
         uri = topo.toDataURI();
         serialized = topo.serialize();
@@ -88,12 +88,12 @@ iwage.mode(iwage.MODES.FABRIC).file = {
         iwage.tools.launch('Open');
     },
     getDataUri: function() {
-        return app().topo.toDataURI();
+        return iwage().topo.toDataURI();
     },
     copy: function() {
-        app().topo.copyActive();
+        iwage().topo.copyActive();
     },
     paste: function() {
-        app().topo.paste();
+        iwage().topo.paste();
     }
 };

@@ -60,28 +60,28 @@ Ext.define('iwage.image.tools.Save', {
                 vertical: true,
                 items: [
                     {
-                        boxLabel: tool.getSize(150).allowed ? app('Miniatura ({w}x{h})').tpl(tool.getSize(150)) : 'MIniatura',
+                        boxLabel: tool.getSize(150).allowed ? iwage('Miniatura ({w}x{h})').tpl(tool.getSize(150)) : 'MIniatura',
                         name: 'rb',
-                        inputValue: app('{w}x{h}').tpl(tool.getSize(150)),
+                        inputValue: iwage('{w}x{h}').tpl(tool.getSize(150)),
                         disabled: !tool.getSize(150).allowed
                     },
                     {
-                        boxLabel: tool.getSize(400).allowed ? app('Medio ({w}x{h})').tpl(tool.getSize(400)) : 'Medio',
+                        boxLabel: tool.getSize(400).allowed ? iwage('Medio ({w}x{h})').tpl(tool.getSize(400)) : 'Medio',
                         name: 'rb',
-                        inputValue: app('{w}x{h}').tpl(tool.getSize(400)),
+                        inputValue: iwage('{w}x{h}').tpl(tool.getSize(400)),
                         disabled: !tool.getSize(400).allowed
                     },
                     {
-                        boxLabel: tool.getSize(800).allowed ? app('Grande ({w}x{h})').tpl(tool.getSize(800)) : 'Grande',
+                        boxLabel: tool.getSize(800).allowed ? iwage('Grande ({w}x{h})').tpl(tool.getSize(800)) : 'Grande',
                         name: 'rb',
-                        inputValue: app('{w}x{h}').tpl(tool.getSize(800)),
+                        inputValue: iwage('{w}x{h}').tpl(tool.getSize(800)),
                         disabled: !tool.getSize(800).allowed
                     },
                     {
-                        boxLabel: app('Tama&ntilde;o Completo ({w}x{h})').tpl(tool.getSize()),
+                        boxLabel: iwage('Tama&ntilde;o Completo ({w}x{h})').tpl(tool.getSize()),
                         name: 'rb',
                         checked: true,
-                        inputValue: app('{w}x{h}').tpl(tool.getSize())
+                        inputValue: iwage('{w}x{h}').tpl(tool.getSize())
                     }
                 ]
             }
@@ -95,7 +95,7 @@ Ext.define('iwage.image.tools.Save', {
         values = this.getValues();
         size = values.size.rb.split('x');
 
-        app().file.doSave({
+        iwage().file.doSave({
             width: size[0],
             height: size[1]
         });

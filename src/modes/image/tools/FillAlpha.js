@@ -37,7 +37,7 @@ Ext.define('iwage.image.tools.FillAlpha', {
         $('.result.rounded').remove();
 
         // Crear la imagen
-        var filled = app().utils.fillAlpha($('.result').get(0), value);
+        var filled = iwage().utils.fillAlpha($('.result').get(0), value);
 
         // TODO usar metodos estandar
         $(filled)

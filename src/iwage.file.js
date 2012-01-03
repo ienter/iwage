@@ -62,7 +62,7 @@ iwage.file = {
     createCanvas: function() {
         return $('<canvas/>').get(0);
     },
-    // TODO mover a app(iwage.MODES.IMAGE)
+    // TODO mover a iwage(iwage.MODES.IMAGE)
     rescale: function(dataUri, scale) {
         var canvas, image, context;
 
@@ -75,8 +75,8 @@ iwage.file = {
         canvas = this.createCanvas();
         context = canvas.getContext('2d');
 
-        canvas.width = app().file.getWidth() * scale;
-        canvas.height = app().file.getHeight() * scale;
+        canvas.width = iwage().file.getWidth() * scale;
+        canvas.height = iwage().file.getHeight() * scale;
 
         context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
@@ -155,6 +155,6 @@ iwage.file = {
         $(scaled).addClass('result').appendTo('#container');
     },
     viewAsImage: function() {
-        window.open(app().file.getDataUri(), '_preview');
+        window.open(iwage().file.getDataUri(), '_preview');
     }
 }

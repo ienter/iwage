@@ -46,7 +46,7 @@ Ext.define('iwage.fabric.tools.Open', {
                         overCls: 'hover-active',
                         border: false,
                         padding: 5,
-                        html: app('<div data-id="{id}">{name}</div>').tpl({
+                        html: iwage('<div data-id="{id}">{name}</div>').tpl({
                             id: e.idLogoSave,
                             name: e.name
                         })
@@ -86,12 +86,12 @@ Ext.define('iwage.fabric.tools.Open', {
                 preview.add({
                     xtype: 'container',
                     padding: 10,
-                    html: app(this.activeTpl).tpl({
+                    html: iwage(this.activeTpl).tpl({
                         name: rec.name,
                         date: rec.date,
                         w: rec.width,
                         h: rec.height,
-                        img: app('<img src="{base}asset/logo_save/preview/{file}" alt="">').tpl({
+                        img: iwage('<img src="{base}asset/logo_save/preview/{file}" alt="">').tpl({
                             base: '/',
                             file: rec.preview + '.png' + '?' + Math.random()
                         })
