@@ -62,7 +62,7 @@ iwage.file = {
     createCanvas: function() {
         return $('<canvas/>').get(0);
     },
-    // TODO mover a iwage(iwage.MODES.IMAGE)
+    // TODO move to iwage(iwage.MODES.IMAGE)
     rescale: function(dataUri, scale) {
         var canvas, image, context;
 
