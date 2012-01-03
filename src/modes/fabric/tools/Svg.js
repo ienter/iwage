@@ -1,10 +1,10 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.Svg', {
-    extend: 'app.tools.Open',
+Ext.define('iwage.fabric.tools.Svg', {
+    extend: 'iwage.tools.Open',
     toolLabel: 'SVG',
     use: function(options) {
-        this.proxy = app.options.svgProxy;
+        this.proxy = iwage.options.svgProxy;
         this.callParent(arguments);
     },
     createControls: function() {
@@ -33,11 +33,11 @@ Ext.define('app.fabric.tools.Svg', {
                 window.open("/system/admin/svg/add.html", '_blank');
             }
         },
-        app.tools.BUTTON.CANCEL
+        iwage.tools.BUTTON.CANCEL
     ],
     applyTool: function(svgPath) {
         try {
-            app(app.MODES.FABRIC).topo.svg(/imagen\/(.+)?\./.exec(svgPath)[1]);
+            app(iwage.MODES.FABRIC).topo.svg(/imagen\/(.+)?\./.exec(svgPath)[1]);
         } catch(e) {
         }
 

@@ -1,7 +1,7 @@
-Ext.ns('app.tools');
+Ext.ns('iwage.tools');
 
-Ext.define('app.tools.Static', {
-    extend: 'app.tools.Common',
+Ext.define('iwage.tools.Static', {
+    extend: 'iwage.tools.Common',
     persist: true,
     getComponent: function () {
         var self = this, buttons;

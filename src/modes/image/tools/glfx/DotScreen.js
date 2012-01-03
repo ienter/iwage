@@ -1,8 +1,8 @@
-Ext.ns('app.image.tools.glfx');
+Ext.ns('iwage.image.tools.glfx');
 
-Ext.define('app.image.tools.glfx.DotScreen', {
+Ext.define('iwage.image.tools.glfx.DotScreen', {
     toolLabel: 'Dot Screen',
-    extend: 'app.image.tools.glfx.Common',
+    extend: 'iwage.image.tools.glfx.Common',
     createControls: function() {
         return [
             {

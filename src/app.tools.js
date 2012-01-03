@@ -1,47 +1,47 @@
 // Herramientas activas (visibles)
-app.tools.active = [];
+iwage.tools.active = [];
 
-app.tools.launch = function (toolName, options) {
+iwage.tools.launch = function (toolName, options) {
     var tool;
 
-    toolName = 'app.' + app.getMode().toLowerCase() + '.tools.' + toolName;
+    toolName = 'iwage.' + iwage.getMode().toLowerCase() + '.tools.' + toolName;
 
-    app.log('Tool: ' + toolName);
+    iwage.log('Tool: ' + toolName);
 
     // Eliminamos las herramientas volatiles
-    app.tools.clear();
+    iwage.tools.clear();
 
     options = Ext.apply({
-        dataUri: app.file.getDataUri(),
-        width: app.file.getWidth(),
-        height: app.file.getHeight(),
+        dataUri: iwage.file.getDataUri(),
+        width: iwage.file.getWidth(),
+        height: iwage.file.getHeight(),
         tool: tool
     }, options || {});
 
     tool = Ext.create(toolName, options);
 
     if (tool.unique) {
-        app.tools.clearByType(tool.$className);
+        iwage.tools.clearByType(tool.$className);
     }
 
     tool.use(options);
 
-    app.tools.active.push(tool);
+    iwage.tools.active.push(tool);
 
     return tool;
 };
 
-app.tools.launcher = function (tool, options) {
+iwage.tools.launcher = function (tool, options) {
     return function () {
-        app.tools.launch(tool, options);
+        iwage.tools.launch(tool, options);
     }
 };
 
 /**
  * Mata las herramientas activas NO PERSISTENTES
  */
-app.tools.clear = function () {
-    var actives = app.tools.active;
+iwage.tools.clear = function () {
+    var actives = iwage.tools.active;
     for (var i = 0, l = actives.length; i < l; i++) {
         if (!actives[i].persist) {
             actives[i].destroy();
@@ -49,14 +49,14 @@ app.tools.clear = function () {
         }
     }
 
-    app.exec('tools.onClear');
+    iwage.exec('tools.onClear');
 };
 
 /**
  * Mata las herramientas activas NO PERSISTENTES
  */
-app.tools.clearByType = function (className) {
-    var actives = app.tools.active;
+iwage.tools.clearByType = function (className) {
+    var actives = iwage.tools.active;
 
     for (var i = 0, l = actives.length; i < l; i++) {
         if (!actives[i]) {
@@ -72,8 +72,8 @@ app.tools.clearByType = function (className) {
     }
 };
 
-app.tools.getByType = function (className) {
-    var actives = app.tools.active;
+iwage.tools.getByType = function (className) {
+    var actives = iwage.tools.active;
     for (var i = 0, l = actives.length; i < l; i++) {
         if (!actives[i]) {
             actives.splice(i, 1);
@@ -88,12 +88,12 @@ app.tools.getByType = function (className) {
     return null;
 };
 
-app.tools.setMode = function (mode) {
-    var actives = app.tools.active;
+iwage.tools.setMode = function (mode) {
+    var actives = iwage.tools.active;
     for (var i = 0, l = actives.length; i < l; i++) {
         if (!actives[i].mode) {
             // Toda tool deberia tener un modo
-            app.warn('Modeless tool: ' + actives[i].$className);
+            iwage.warn('Modeless tool: ' + actives[i].$className);
             continue;
         }
 
@@ -102,7 +102,7 @@ app.tools.setMode = function (mode) {
             continue;
         }
 
-        if (actives[i].mode != app.getMode()) {
+        if (actives[i].mode != iwage.getMode()) {
             actives[i].hide();
         } else {
             actives[i].show();
@@ -110,27 +110,27 @@ app.tools.setMode = function (mode) {
     }
 };
 
-app.tools.getStatic = function () {
+iwage.tools.getStatic = function () {
     var components = [];
 
     // TODO mover a cada modo
-    app.tools.active = app.tools.active.concat([
-        //Ext.create('app.fabric.tools.ImageEditionReady'),
-        Ext.create('app.fabric.tools.EditImage'),
-        Ext.create('app.fabric.tools.ImageEditionReady'),
-        Ext.create('app.image.tools.FabricImageReady'),
-        Ext.create('app.image.tools.EditAsFabric'),
+    iwage.tools.active = iwage.tools.active.concat([
+        //Ext.create('iwage.fabric.tools.ImageEditionReady'),
+        Ext.create('iwage.fabric.tools.EditImage'),
+        Ext.create('iwage.fabric.tools.ImageEditionReady'),
+        Ext.create('iwage.image.tools.FabricImageReady'),
+        Ext.create('iwage.image.tools.EditAsFabric'),
 
-        Ext.create('app.image.tools.Zoom'),
+        Ext.create('iwage.image.tools.Zoom'),
 
-        Ext.create('app.fabric.tools.Position'),
-        Ext.create('app.fabric.tools.Appearance')
+        Ext.create('iwage.fabric.tools.Position'),
+        Ext.create('iwage.fabric.tools.Appearance')
     ]);
 
-    Ext.each(app.tools.active, function (current, index) {
+    Ext.each(iwage.tools.active, function (current, index) {
         components.push(current.getComponent());
 
-        if (current.mode != app.getMode()) {
+        if (current.mode != iwage.getMode()) {
             current.hide();
         }
     });

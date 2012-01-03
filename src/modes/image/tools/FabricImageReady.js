@@ -1,7 +1,7 @@
-Ext.ns('app.image.tools');
+Ext.ns('iwage.image.tools');
 
-Ext.define('app.image.tools.FabricImageReady', {
-    extend: 'app.image.tools.Static',
+Ext.define('iwage.image.tools.FabricImageReady', {
+    extend: 'iwage.image.tools.Static',
     refresh: function(itemId, value) {
     },
     getComponent: function() {
@@ -13,7 +13,7 @@ Ext.define('app.image.tools.FabricImageReady', {
 
         this.component = Ext.create('Ext.button.Button', {
             text: 'Aplicar cambios',
-            icon: app.icon('tick'),
+            icon: iwage.icon('tick'),
             margin: 5,
             width: 260,
             hidden: true,
@@ -25,12 +25,12 @@ Ext.define('app.image.tools.FabricImageReady', {
         return this.component;
     },
     onModeChanged: function(mode) {
-        if (mode == app.MODES.FABRIC) {
+        if (mode == iwage.MODES.FABRIC) {
             this.hide();
             return;
         }
 
-        if (!app.get('editing_fabric_as_image')) {
+        if (!iwage.get('editing_fabric_as_image')) {
             this.hide();
             return;
         }
@@ -41,10 +41,10 @@ Ext.define('app.image.tools.FabricImageReady', {
     applyTool: function() {
         var dataUri, newImage, oldImage, topo;
 
-        dataUri = app.file.getDataUri();
+        dataUri = iwage.file.getDataUri();
         newImage = fabric.Image.fromDataURL(dataUri);
 
-        oldImage = app.fabric.imageHolder;
+        oldImage = iwage.fabric.imageHolder;
 
         if (!oldImage) {
             // error!
@@ -58,17 +58,17 @@ Ext.define('app.image.tools.FabricImageReady', {
             opacity: oldImage.get('opacity')
         });
 
-        topo = app.fabric.topo;
+        topo = iwage.fabric.topo;
 
         topo.add(newImage);
         topo.exec('calcOffset');
         topo.refresh();
         topo.setActiveObject(newImage);
 
-        app.fabric.imageHolder = null;
-        app.file.clear();
+        iwage.fabric.imageHolder = null;
+        iwage.file.clear();
 
 
-        app.setMode(app.MODES.FABRIC);
+        iwage.setMode(iwage.MODES.FABRIC);
     }
 });

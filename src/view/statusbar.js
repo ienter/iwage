@@ -1,20 +1,20 @@
-Ext.ns('app.view.statusbar');
+Ext.ns('iwage.view.statusbar');
 
-app.view.statusbar.create = function() {
-    if (app.view.statusbar.instance) {
-        return app.view.statusbar.instance;
+iwage.view.statusbar.create = function() {
+    if (iwage.view.statusbar.instance) {
+        return iwage.view.statusbar.instance;
     }
 
-    app.view.statusbar.instance = Ext.create('Ext.toolbar.Toolbar', {
+    iwage.view.statusbar.instance = Ext.create('Ext.toolbar.Toolbar', {
         border: false,
         hidden: true
     });
 
-    return app.view.statusbar.instance;
+    return iwage.view.statusbar.instance;
 };
 
-app.view.statusbar.setMessage = function(message) {
-    var toolbar = app.view.statusbar.instance;
+iwage.view.statusbar.setMessage = function(message) {
+    var toolbar = iwage.view.statusbar.instance;
 
     if (!toolbar) {
         return;
@@ -26,8 +26,8 @@ app.view.statusbar.setMessage = function(message) {
     toolbar.add(message);
 };
 
-app.view.statusbar.hide = function() {
-    var toolbar = app.view.statusbar.instance;
+iwage.view.statusbar.hide = function() {
+    var toolbar = iwage.view.statusbar.instance;
 
     if (!toolbar) {
         return;

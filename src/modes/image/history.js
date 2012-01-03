@@ -1,4 +1,4 @@
-app.mode(app.MODES.IMAGE).history = {
+iwage.mode(iwage.MODES.IMAGE).history = {
     addUndo: function() {
         $('<img/>')
             .attr('src', $('.result').attr('src'))
@@ -6,7 +6,7 @@ app.mode(app.MODES.IMAGE).history = {
 
         // Una vez realizado un cambio, no se puede rehacer ningun
         // paso
-        app.history.clearRedoHistory();
+        iwage.history.clearRedoHistory();
     },
     addRedo: function() {
         $('<img/>')
@@ -36,21 +36,21 @@ app.mode(app.MODES.IMAGE).history = {
         return uri;
     },
     undo: function() {
-        app.history.addRedo();
+        iwage.history.addRedo();
 
-        app.file.set(
-            app.history.getUndo(-1),
+        iwage.file.set(
+            iwage.history.getUndo(-1),
             {
                 isUndo: true
             }
         );
     },
     redo: function() {
-        app.file.set(app.history.getRedo(0));
+        iwage.file.set(iwage.history.getRedo(0));
     },
     clear: function() {
-        app.history.clearUndoHistory();
-        app.history.clearRedoHistory();
+        iwage.history.clearUndoHistory();
+        iwage.history.clearRedoHistory();
     },
     clearUndoHistory: function() {
         $('#history-undo').children().remove();
@@ -61,11 +61,11 @@ app.mode(app.MODES.IMAGE).history = {
     setOriginal: function(original) {
     },
     getOriginal: function() {
-        return app.history.getUndo(0);
+        return iwage.history.getUndo(0);
     },
     backToOriginal: function() {
-        app.file.load(
-            app.history.getOriginal()
+        iwage.file.load(
+            iwage.history.getOriginal()
         );
     }
 };

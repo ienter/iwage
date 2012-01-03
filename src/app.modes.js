@@ -1,4 +1,4 @@
-app.MODES = {
+iwage.MODES = {
     IMAGE: 'IMAGE',
     FABRIC: 'FABRIC'
 };

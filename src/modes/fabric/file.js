@@ -1,18 +1,18 @@
-app.mode(app.MODES.FABRIC).file = {
+iwage.mode(iwage.MODES.FABRIC).file = {
     handle: function(dataUri) {
-        app.fabric.topo.imageFromDataUri(dataUri);
+        iwage.fabric.topo.imageFromDataUri(dataUri);
 
-        Ext.each(app.tools.active, function(current, index, total) {
-            if (current.$className == 'app.tools.fabric.Image') {
+        Ext.each(iwage.tools.active, function(current, index, total) {
+            if (current.$className == 'iwage.tools.fabric.Image') {
                 current.destroy();
             }
         });
     },
     load: function(json) {
-        app.fabric.topo.open(json);
+        iwage.fabric.topo.open(json);
     },
     save: function() {
-        var file = app(app.MODES.FABRIC).file;
+        var file = app(iwage.MODES.FABRIC).file;
 
         Ext.Msg.prompt('Guardar', 'Nombre del archivo:', function(btn, text) {
             if (btn == 'ok') {
@@ -38,7 +38,7 @@ app.mode(app.MODES.FABRIC).file = {
     },
     verifySaveName: function(name, callback) {
         Ext.Ajax.request({
-            url: app.options.fabricVerifyName,
+            url: iwage.options.fabricVerifyName,
             params: {
                 name: name
             },
@@ -50,7 +50,7 @@ app.mode(app.MODES.FABRIC).file = {
                 try {
                     json = Ext.JSON.decode(data);
                 } catch(e) {
-                    app.error(e);
+                    iwage.error(e);
                 }
 
                 (callback || function() {
@@ -69,7 +69,7 @@ app.mode(app.MODES.FABRIC).file = {
         serialized = topo.serialize();
 
         Ext.Ajax.request({
-            url: app.options.fabricSaveProxy,
+            url: iwage.options.fabricSaveProxy,
             params: {
                 name: name,
                 uri: uri,
@@ -85,7 +85,7 @@ app.mode(app.MODES.FABRIC).file = {
         });
     },
     open: function() {
-        app.tools.launch('Open');
+        iwage.tools.launch('Open');
     },
     getDataUri: function() {
         return app().topo.toDataURI();

@@ -1,8 +1,8 @@
-Ext.ns('app.image.tools.glfx');
+Ext.ns('iwage.image.tools.glfx');
 
-Ext.define('app.image.tools.glfx.Ink', {
+Ext.define('iwage.image.tools.glfx.Ink', {
     toolLabel: 'Ink',
-    extend: 'app.image.tools.glfx.Common',
+    extend: 'iwage.image.tools.glfx.Common',
     createControls: function() {
         return [
             {

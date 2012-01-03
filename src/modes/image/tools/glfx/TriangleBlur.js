@@ -1,8 +1,8 @@
-Ext.ns('app.image.tools.glfx');
+Ext.ns('iwage.image.tools.glfx');
 
-Ext.define('app.image.tools.glfx.TriangleBlur', {
+Ext.define('iwage.image.tools.glfx.TriangleBlur', {
     toolLabel: 'Triangle Blur',
-    extend: 'app.image.tools.glfx.Common',
+    extend: 'iwage.image.tools.glfx.Common',
     createControls: function() {
         return [
             {

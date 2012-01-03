@@ -1,7 +1,7 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.Text', {
-    extend: 'app.fabric.tools.Common',
+Ext.define('iwage.fabric.tools.Text', {
+    extend: 'iwage.fabric.tools.Common',
     persist: false,
     toolLabel: 'Texto',
     top: 30,
@@ -57,9 +57,9 @@ Ext.define('app.fabric.tools.Text', {
                 fontFamily: fontFamily
             });
 
-            app(app.MODES.FABRIC).topo.refresh();
+            app(iwage.MODES.FABRIC).topo.refresh();
         } else {
-            this.text = app(app.MODES.FABRIC).topo.text(text, {
+            this.text = app(iwage.MODES.FABRIC).topo.text(text, {
                 fontFamily: fontFamily
             });
         }

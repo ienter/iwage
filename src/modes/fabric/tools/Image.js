@@ -1,9 +1,9 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.Image', {
-    extend: 'app.tools.Open',
+Ext.define('iwage.fabric.tools.Image', {
+    extend: 'iwage.tools.Open',
     toolLabel: 'Imagen',
     applyTool: function(imagePath) {
-        app(app.MODES.FABRIC).topo.image(imagePath);
+        app(iwage.MODES.FABRIC).topo.image(imagePath);
     }
 });

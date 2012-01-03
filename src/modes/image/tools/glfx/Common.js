@@ -1,12 +1,12 @@
-Ext.ns('app.image.tools.glfx');
+Ext.ns('iwage.image.tools.glfx');
 
-Ext.define('app.image.tools.glfx.Common', {
-    extend: 'app.tools.Common',
-    mode: app.MODES.IMAGE,
+Ext.define('iwage.image.tools.glfx.Common', {
+    extend: 'iwage.tools.Common',
+    mode: iwage.MODES.IMAGE,
     use: function(options) {
         var fxCanvas, placeholder, image;
 
-        app.file.hide();
+        iwage.file.hide();
 
         placeholder = $('<div/>').addClass('glfx').css({
             position: 'absolute',
@@ -20,7 +20,7 @@ Ext.define('app.image.tools.glfx.Common', {
         try {
             fxCanvas = fx.canvas();
         } catch (e) {
-            app.log(e);
+            iwage.log(e);
             (options.onError || function() {
             })(e);
             return false;
@@ -44,14 +44,14 @@ Ext.define('app.image.tools.glfx.Common', {
         // Render inicial
         this.fxCanvas.draw(this.texture).update();
 
-        app.view.adjustContainer();
+        iwage.view.adjustContainer();
 
         this.renderComponent();
 
         return true;
     },
     applyTool: function() {
-        app.file.set(this.fxCanvas.toDataURL('image/png'));
+        iwage.file.set(this.fxCanvas.toDataURL('image/png'));
     },
     previewFilter: function(values) {
         throw 'Unimplemented method: applyFilter';
@@ -74,6 +74,6 @@ Ext.define('app.image.tools.glfx.Common', {
         } catch(e) {
         }
 
-        app.file.show();
+        iwage.file.show();
     }
 });

@@ -1,16 +1,16 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.Configuration', {
+Ext.define('iwage.fabric.tools.Configuration', {
     unique: true,
     persist: false,
-    extend: 'app.fabric.tools.Common',
+    extend: 'iwage.fabric.tools.Common',
     toolLabel: 'Configurar lienzo',
     createControls: function() {
         return [
             {
                 xtype: 'numberfield',
                 itemId: 'height',
-                value:  app(app.MODES.FABRIC).topo.getHeight(),
+                value:  app(iwage.MODES.FABRIC).topo.getHeight(),
                 fieldLabel: 'Alto',
                 minValue: 0,
                 allowDecimals: false,
@@ -19,7 +19,7 @@ Ext.define('app.fabric.tools.Configuration', {
             {
                 xtype: 'numberfield',
                 itemId: 'width',
-                value:  app(app.MODES.FABRIC).topo.getWidth(),
+                value:  app(iwage.MODES.FABRIC).topo.getWidth(),
                 fieldLabel: 'Ancho',
                 minValue: 0,
                 allowDecimals: false,
@@ -32,11 +32,11 @@ Ext.define('app.fabric.tools.Configuration', {
     applyTool: function() {
         var values = this.getValues();
 
-        // TODO mover a app.fabric y centrar
+        // TODO mover a iwage.fabric y centrar
 
-        app(app.MODES.FABRIC).topo.setHeight(values.height);
-        app(app.MODES.FABRIC).topo.setWidth(values.width);
+        app(iwage.MODES.FABRIC).topo.setHeight(values.height);
+        app(iwage.MODES.FABRIC).topo.setWidth(values.width);
 
-        app.view.centerContainer();
+        iwage.view.centerContainer();
     }
 });

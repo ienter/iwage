@@ -1,13 +1,13 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.Open', {
-    extend: 'app.tools.Open',
+Ext.define('iwage.fabric.tools.Open', {
+    extend: 'iwage.tools.Open',
     toolLabel: 'Abrir',
     use: function(options) {
         var self = this;
 
         Ext.Ajax.request({
-            url: this.proxy || app.options.fabricProxy,
+            url: this.proxy || iwage.options.fabricProxy,
             success: function(response) {
                 var json = Ext.JSON.decode(response.responseText);
 
@@ -102,7 +102,7 @@ Ext.define('app.fabric.tools.Open', {
                 {
                     xtype: 'button',
                     text: 'Abrir',
-                    icon: app.icon('tick'),
+                    icon: iwage.icon('tick'),
                     handler: function(self) {
                         var opener = openTool.getComponent();
 
@@ -112,7 +112,7 @@ Ext.define('app.fabric.tools.Open', {
                             return;
                         }
 
-                        app.file.load(active.serialized);
+                        iwage.file.load(active.serialized);
 
                         openTool.destroy();
                     }
@@ -120,7 +120,7 @@ Ext.define('app.fabric.tools.Open', {
                 {
                     xtype: 'button',
                     text: 'Cancelar',
-                    icon: app.icon('delete_cross'),
+                    icon: iwage.icon('delete_cross'),
                     handler: function(self) {
                         try {
                             openTool.destroy();

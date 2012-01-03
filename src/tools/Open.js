@@ -1,7 +1,7 @@
-Ext.ns('app.tools');
+Ext.ns('iwage.tools');
 
-Ext.define('app.tools.Open', {
-    extend: 'app.tools.Common',
+Ext.define('iwage.tools.Open', {
+    extend: 'iwage.tools.Common',
     unique: true,
     persist: false,
     toolLabel: 'Abrir archivo',
@@ -10,7 +10,7 @@ Ext.define('app.tools.Open', {
         var self = this;
 
         Ext.Ajax.request({
-            url: this.proxy || app.options.galleryProxy,
+            url: this.proxy || iwage.options.galleryProxy,
             success: function(response) {
                 var json = Ext.JSON.decode(response.responseText);
 
@@ -44,14 +44,14 @@ Ext.define('app.tools.Open', {
                 xtype: 'container',
                 height: 40,
                 width: '100%',
-                html: '<div style="text-align: center;"><input type="file" id="fileLoader" multiple="false" accept="image/*" onchange="app.file.handle(this.files)"></div>'
+                html: '<div style="text-align: center;"><input type="file" id="fileLoader" multiple="false" accept="image/*" onchange="iwage.file.handle(this.files)"></div>'
             }
         ]
     },
     refresh: function(options) {
     },
     applyTool: function(imagePath) {
-        app.file.openUrl(imagePath);
+        iwage.file.openUrl(imagePath);
         this.destroy();
     },
     initEvents: function() {
@@ -62,7 +62,7 @@ Ext.define('app.tools.Open', {
             self.destroy();
         });
 
-        app.on(['file:handled', 'app:cancel'], function() {
+        iwage.on(['file:handled', 'app:cancel'], function() {
             self.destroy();
         });
     },

@@ -1,25 +1,25 @@
-app.ns('file');
+iwage.ns('file');
 
-app.file = {
+iwage.file = {
     open: function() {
-        return app.exec('file.open', arguments);
+        return iwage.exec('file.open', arguments);
     },
     load: function(resource) {
-        app.view.clearZoom();
-        return app.exec('file.load', arguments);
+        iwage.view.clearZoom();
+        return iwage.exec('file.load', arguments);
     },
     clear: function() {
-        app.history.clear();
-        return app.exec('file.clear', arguments);
+        iwage.history.clear();
+        return iwage.exec('file.clear', arguments);
     },
     set: function(resource, options) {
-        return app.exec('file.set', arguments);
+        return iwage.exec('file.set', arguments);
     },
     save: function(opts) {
-        return app.exec('file.save', arguments);
+        return iwage.exec('file.save', arguments);
     },
     saveImage: function() {
-        return app.exec('file.saveImage', arguments);
+        return iwage.exec('file.saveImage', arguments);
     },
     handle: function(files) {
         if (!files || !files[0]) {
@@ -31,38 +31,38 @@ app.file = {
             reader = new FileReader();
 
         reader.onload = function(e) {
-            app.exec('file.handle', [e.target.result]);
+            iwage.exec('file.handle', [e.target.result]);
         };
 
         reader.readAsDataURL(file);
 
-        app.emit('file:handled', file);
+        iwage.emit('file:handled', file);
     },
     getDataUri: function(opts) {
-        return app.exec('file.getDataUri', arguments);
+        return iwage.exec('file.getDataUri', arguments);
     },
     hide: function() {
-        return app.exec('file.hide', arguments);
+        return iwage.exec('file.hide', arguments);
     },
     show: function() {
-        return app.exec('file.show', arguments);
+        return iwage.exec('file.show', arguments);
     },
     copy: function() {
-        return app.exec('file.copy', arguments);
+        return iwage.exec('file.copy', arguments);
     },
     paste: function() {
-        return app.exec('file.paste', arguments);
+        return iwage.exec('file.paste', arguments);
     },
     getHeight: function() {
-        return app.exec('file.getHeight', arguments);
+        return iwage.exec('file.getHeight', arguments);
     },
     getWidth: function() {
-        return app.exec('file.getWidth', arguments);
+        return iwage.exec('file.getWidth', arguments);
     },
     createCanvas: function() {
         return $('<canvas/>').get(0);
     },
-    // TODO mover a app(app.MODES.IMAGE)
+    // TODO mover a app(iwage.MODES.IMAGE)
     rescale: function(dataUri, scale) {
         var canvas, image, context;
 
@@ -85,9 +85,9 @@ app.file = {
         return dataUri;
     },
     rescaleResult: function(scale) {
-        app.file.set(
-            app.file.rescale(
-                app.file.getDataUri,
+        iwage.file.set(
+            iwage.file.rescale(
+                iwage.file.getDataUri,
                 scale
             )
         );
@@ -108,7 +108,7 @@ app.file = {
         var image = new Image;
         image.src = url;
 
-        return app.file.imageToDataUri(image);
+        return iwage.file.imageToDataUri(image);
     },
     dataUriToImage: function(dataUri) {
         var image;
@@ -119,8 +119,8 @@ app.file = {
         return image;
     },
     openUrl: function(url) {
-        app.file.load(
-            app.file.imageUrlToDataUri(url)
+        iwage.file.load(
+            iwage.file.imageUrlToDataUri(url)
         );
     },
     scale: function(img, scale) {
@@ -143,13 +143,13 @@ app.file = {
         var scale, result, scaled;
 
         result = $('.result').get(0);
-        scale = 1 / app.view.getZoom();
+        scale = 1 / iwage.view.getZoom();
 
         if (isNaN(scale) || scale == 1) {
             return;
         }
 
-        scaled = app.file.scale(result, scale);
+        scaled = iwage.file.scale(result, scale);
 
         $('.result').remove();
         $(scaled).addClass('result').appendTo('#container');

@@ -1,8 +1,8 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.Static', {
-    extend: 'app.tools.Static',
-    mode: app.MODES.FABRIC,
+Ext.define('iwage.fabric.tools.Static', {
+    extend: 'iwage.tools.Static',
+    mode: iwage.MODES.FABRIC,
     refresh: function(itemId, value) {
         if (!itemId) {
             return;
@@ -10,13 +10,13 @@ Ext.define('app.fabric.tools.Static', {
 
         try {
             if (itemId != 'angle') {
-                app(app.MODES.FABRIC).topo.getActive().set(itemId, value);
+                app(iwage.MODES.FABRIC).topo.getActive().set(itemId, value);
             } else {
-                app(app.MODES.FABRIC).topo.getActive().setAngle(value);
+                app(iwage.MODES.FABRIC).topo.getActive().setAngle(value);
             }
-            app(app.MODES.FABRIC).topo.refresh();
+            app(iwage.MODES.FABRIC).topo.refresh();
         } catch(e) {
-            app.log(e);
+            iwage.log(e);
         }
     },
     onObjectSelected: function(field, itemId, fabricObject) {

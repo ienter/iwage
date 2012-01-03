@@ -1,22 +1,22 @@
-Ext.ns('app.image.tools');
+Ext.ns('iwage.image.tools');
 
-Ext.define('app.image.tools.Save', {
-    mode: app.MODES.IMAGE,
+Ext.define('iwage.image.tools.Save', {
+    mode: iwage.MODES.IMAGE,
     persist: false,
     unique: true,
     toolLabel: 'Guardar',
-    extend: 'app.tools.Common',
+    extend: 'iwage.tools.Common',
     buttons: [
         {
             text: 'Guardar',
-            icon: app.icon('save'),
+            icon: iwage.icon('save'),
             handler: function () {
                 this.applyTool();
             }
         },
         {
             text: 'Cancelar',
-            icon: app.icon('delete_cross'),
+            icon: iwage.icon('delete_cross'),
             handler: function () {
                 this.destroy();
             }
@@ -25,8 +25,8 @@ Ext.define('app.image.tools.Save', {
     getSize: function (max) {
         var width, height, prop, w, h, allowed;
 
-        w = width = app.file.getWidth();
-        h = height = app.file.getHeight();
+        w = width = iwage.file.getWidth();
+        h = height = iwage.file.getHeight();
 
         allowed = true;
 

@@ -1,7 +1,7 @@
-Ext.ns('app.image.tools.glfx');
+Ext.ns('iwage.image.tools.glfx');
 
-Ext.define('app.image.tools.glfx.LensBlur', {
-    extend: 'app.image.tools.glfx.Common',
+Ext.define('iwage.image.tools.glfx.LensBlur', {
+    extend: 'iwage.image.tools.glfx.Common',
     toolLabel: 'Lens Blur',
     createControls: function() {
         return [

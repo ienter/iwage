@@ -1,5 +1,5 @@
 /*
- * fabricMode app.mode(app.MODES.FABRIC)
+ * fabricMode iwage.mode(iwage.MODES.FABRIC)
  */
 
 (function(fabricMode) {
@@ -40,13 +40,13 @@
 
         topoInstance.on('selected:none', function() {
             if (!fabricMode.eventsStopped) {
-                app.emit('app:fabric:selected:none');
+                iwage.emit('app:fabric:selected:none');
             }
         });
 
         topoInstance.on('selected', function(object) {
             if (!fabricMode.eventsStopped) {
-                app.emit('app:fabric:selected', object);
+                iwage.emit('app:fabric:selected', object);
             }
         });
 
@@ -56,7 +56,7 @@
     };
 
     fabricMode.clear = function() {
-        var canvas = app(app.MODES.FABRIC).topo.canvas;
+        var canvas = app(iwage.MODES.FABRIC).topo.canvas;
 
         var obj;
         while (obj = canvas.item(0)) {
@@ -74,12 +74,12 @@
             function ready() {
                 requested++;
 
-                app.view.statusbar.setMessage(
+                iwage.view.statusbar.setMessage(
                     'Cagando fuentes ' + Math.floor(requested / toRequest * 100) + '%'
                 );
 
                 if (toRequest == requested) {
-                    app.view.statusbar.hide();
+                    iwage.view.statusbar.hide();
                 }
             }
 
@@ -113,15 +113,15 @@
 
     fabricMode.initEvents = function() {
 
-        app.on('app:fabric:selected:none', function() {
+        iwage.on('app:fabric:selected:none', function() {
             fabricMode.onObjectUnselected();
         });
 
-        app.on('app:fabric:selected', function(object) {
+        iwage.on('app:fabric:selected', function(object) {
             fabricMode.onObjectSelected(object);
         });
 
-        app.on('app:mode', function(mode) {
+        iwage.on('app:mode', function(mode) {
             fabricMode.topo.refresh();
         });
 
@@ -135,7 +135,7 @@
      * Deshabilita todas las herramientas estaticas
      */
     fabricMode.onObjectUnselected = function() {
-        Ext.each(app.tools.active, function(tool, index, all) {
+        Ext.each(iwage.tools.active, function(tool, index, all) {
             if (tool.onObjectUnselected) {
                 tool.onObjectUnselected();
                 return;
@@ -144,7 +144,7 @@
     };
 
     fabricMode.onObjectSelected = function(object) {
-        Ext.each(app.tools.active, function(tool, index, all) {
+        Ext.each(iwage.tools.active, function(tool, index, all) {
             if (!tool.onObjectSelected) {
                 return;
             }
@@ -184,9 +184,9 @@
     fabricMode.onTextObjectSelected = function(object) {
         var control;
 
-        app.tools.clearByType('fabricMode.tools.Text');
+        iwage.tools.clearByType('fabricMode.tools.Text');
 
-        control = app.tools.launch('Text', {
+        control = iwage.tools.launch('Text', {
             text: object
         });
 
@@ -219,7 +219,7 @@
 
     fabricMode.preview = function() {
         // Abrir una ventana al home
-        var w = window.open('/', app.uid('_preview'));
+        var w = window.open('/', iwage.uid('_preview'));
 
         // Modificar el logo
         $(w).load(function() {
@@ -239,8 +239,8 @@
                 uri: uri
             },
             success: function(response) {
-                app.alert('Logo instalado!');
+                iwage.alert('Logo instalado!');
             }
         });
     };
-})(app.mode(app.MODES.FABRIC));
+})(iwage.mode(iwage.MODES.FABRIC));

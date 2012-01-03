@@ -1,21 +1,21 @@
 /**
- * @see app.file
+ * @see iwage.file
  */
-app.mode(app.MODES.IMAGE).file = {
+iwage.mode(iwage.MODES.IMAGE).file = {
     open: function () {
-        app.tools.launch('Open');
+        iwage.tools.launch('Open');
     },
     load: function (dataUri) {
-        app.file.set(dataUri);
-        app.history.clear();
-        app.history.setOriginal(dataUri);
-        app.view.centerContainer();
+        iwage.file.set(dataUri);
+        iwage.history.clear();
+        iwage.history.setOriginal(dataUri);
+        iwage.view.centerContainer();
     },
     clear: function () {
         $('.placeholder .result-container').hide();
     },
     handle: function (dataUri) {
-        app.file.load(dataUri);
+        iwage.file.load(dataUri);
     },
     set: function (result, opts) {
         opts = opts || {};
@@ -25,7 +25,7 @@ app.mode(app.MODES.IMAGE).file = {
         }
 
         if (!opts.isUndo) {
-            app.history.addUndo();
+            iwage.history.addUndo();
         }
 
         $('.result').remove();
@@ -40,12 +40,12 @@ app.mode(app.MODES.IMAGE).file = {
 
         $('.result-container, #container').show();
 
-        app.tools.clear();
-        app.view.adjustContainer();
-        app.view.adjustContainer(100);
+        iwage.tools.clear();
+        iwage.view.adjustContainer();
+        iwage.view.adjustContainer(100);
     },
     save: function() {
-        app.tools.launch('Save')
+        iwage.tools.launch('Save')
     },
     /**
      * Ejecuta el save de la imagen actual
@@ -57,21 +57,21 @@ app.mode(app.MODES.IMAGE).file = {
         opts = opts || {};
 
         // Caso contrario renderiza la imagen al browser
-        if (!app.options.proxy) {
+        if (!iwage.options.proxy) {
             window.open($('.result').attr('src'), '_open');
             return;
         }
 
-        app.view.statusbar.setMessage('Guardando...');
+        iwage.view.statusbar.setMessage('Guardando...');
 
-        var params = app.options.params || {};
+        var params = iwage.options.params || {};
 
-        params['dataUri'] = app.file.getDataUri(opts);
+        params['dataUri'] = iwage.file.getDataUri(opts);
 
-        app.file.set(params['dataUri']);
+        iwage.file.set(params['dataUri']);
 
         Ext.Ajax.request({
-            url: app.options.proxy,
+            url: iwage.options.proxy,
             params: params,
             timeout: 0,
             success: function (response) {
@@ -80,7 +80,7 @@ app.mode(app.MODES.IMAGE).file = {
                 // TODO crear proxy para mensajes
                 Ext.MessageBox.alert('Aviso', 'Archivo guardado!');
 
-                app.view.statusbar.hide();
+                iwage.view.statusbar.hide();
             }
         });
     },
@@ -89,14 +89,14 @@ app.mode(app.MODES.IMAGE).file = {
 
         opts = opts || {};
 
-        width = app.file.getWidth();
-        height = app.file.getHeight();
+        width = iwage.file.getWidth();
+        height = iwage.file.getHeight();
 
         if (!opts.width || opts.width == width) {
             return $('.result').attr('src');
         }
 
-        resized = app(app.MODES.IMAGE).utils.resize(
+        resized = app(iwage.MODES.IMAGE).utils.resize(
             $('.result').get(0),
             opts.width,
             opts.height

@@ -1,7 +1,7 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.Position', {
-    extend: 'app.fabric.tools.Static',
+Ext.define('iwage.fabric.tools.Position', {
+    extend: 'iwage.fabric.tools.Static',
     toolLabel: 'Posicion',
     buttons: [],
     createControls: function() {
@@ -39,9 +39,9 @@ Ext.define('app.fabric.tools.Position', {
                         itemId: 'toFront',
                         margin: '2 2 2 0',
                         text: 'Traer al frente',
-                        icon: app.icon('bring_front'),
+                        icon: iwage.icon('bring_front'),
                         handler:   function() {
-                            app(app.MODES.FABRIC).topo.toFront();
+                            app(iwage.MODES.FABRIC).topo.toFront();
                         }
                     },
                     {
@@ -49,9 +49,9 @@ Ext.define('app.fabric.tools.Position', {
                         itemId: 'toBack',
                         margin: 2,
                         text: 'Enviar al fondo',
-                        icon: app.icon('send_back'),
+                        icon: iwage.icon('send_back'),
                         handler:  function() {
-                            app(app.MODES.FABRIC).topo.toBack();
+                            app(iwage.MODES.FABRIC).topo.toBack();
                         }
                     }
                 ]

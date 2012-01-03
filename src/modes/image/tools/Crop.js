@@ -1,9 +1,9 @@
-Ext.ns('app.image.tools');
+Ext.ns('iwage.image.tools');
 
-Ext.define('app.image.tools.Crop', {
-    mode: app.MODES.IMAGE,
+Ext.define('iwage.image.tools.Crop', {
+    mode: iwage.MODES.IMAGE,
     toolLabel: 'Recortar',
-    extend: 'app.tools.Common',
+    extend: 'iwage.tools.Common',
     createControls: function () {
         return [
             {
@@ -17,7 +17,7 @@ Ext.define('app.image.tools.Crop', {
     use: function (options) {
 
         app().view.setZoom(100);
-        app.emit('app:zoom', 100);
+        iwage.emit('app:zoom', 100);
 
         this.originalImage = new Image;
 
@@ -63,7 +63,7 @@ Ext.define('app.image.tools.Crop', {
             height
         );
 
-        app.file.set(canvas.toDataURL('image/png'));
+        iwage.file.set(canvas.toDataURL('image/png'));
     },
     getWidth: function () {
         return $('.jcrop-holder div:eq(0)').width();

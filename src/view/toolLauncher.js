@@ -1,169 +1,169 @@
-Ext.ns('app.view.toolLauncher');
+Ext.ns('iwage.view.toolLauncher');
 
-app.view.toolLauncher.getTools = function () {
-    var self = app.view.toolLauncher;
+iwage.view.toolLauncher.getTools = function () {
+    var self = iwage.view.toolLauncher;
 
     return self.getFabricTools().concat(self.getImageEditorTools());
 };
 
 // TODO mover a cada modo
-app.view.toolLauncher.getImageEditorTools = function () {
+iwage.view.toolLauncher.getImageEditorTools = function () {
     return [
         {
-            icon: app.icon('crop'),
+            icon: iwage.icon('crop'),
             tooltip: 'Recortar',
-            hidden: app.getMode() == app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('hide', 'show'),
-            handler: app.tools.launcher('Crop')
+            hidden: iwage.getMode() == iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('hide', 'show'),
+            handler: iwage.tools.launcher('Crop')
         },
         {
-            icon: app.icon('rounded'),
+            icon: iwage.icon('rounded'),
             tooltip: 'Bordes Redondeados',
-            hidden: app.getMode() == app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('hide', 'show'),
-            handler: app.tools.launcher('RoundedCorners')
+            hidden: iwage.getMode() == iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('hide', 'show'),
+            handler: iwage.tools.launcher('RoundedCorners')
         },
         {
             xtype: 'tbseparator',
-            hidden: app.getMode() == app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('hide', 'show')
+            hidden: iwage.getMode() == iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('hide', 'show')
         },
         // TRANSFORM
         {
-            icon: app.icon('rotate_anticlockwise'),
+            icon: iwage.icon('rotate_anticlockwise'),
             tooltip: 'Rotar hacia la izquierda',
-            hidden: app.getMode() == app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('hide', 'show'),
+            hidden: iwage.getMode() == iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('hide', 'show'),
             handler: function () {
-                app(app.MODES.IMAGE).transform.rotateMinus90();
+                app(iwage.MODES.IMAGE).transform.rotateMinus90();
             }
         },
         {
-            icon: app.icon('rotate_clockwise'),
+            icon: iwage.icon('rotate_clockwise'),
             tooltip: 'Rotar hacia la derecha',
-            hidden: app.getMode() == app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('hide', 'show'),
+            hidden: iwage.getMode() == iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('hide', 'show'),
             handler: function () {
-                app(app.MODES.IMAGE).transform.rotate90();
+                app(iwage.MODES.IMAGE).transform.rotate90();
             }
         },
         {
-            icon: app.icon('flip_horizontal'),
+            icon: iwage.icon('flip_horizontal'),
             tooltip: 'Rotar hacia la derecha',
-            hidden: app.getMode() == app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('hide', 'show'),
+            hidden: iwage.getMode() == iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('hide', 'show'),
             handler: function () {
-                app(app.MODES.IMAGE).transform.translateHorizontal();
+                app(iwage.MODES.IMAGE).transform.translateHorizontal();
             }
         },
         {
-            icon: app.icon('flip_vertical'),
+            icon: iwage.icon('flip_vertical'),
             tooltip: 'Rotar hacia la derecha',
-            hidden: app.getMode() == app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('hide', 'show'),
+            hidden: iwage.getMode() == iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('hide', 'show'),
             handler: function () {
-                app(app.MODES.IMAGE).transform.translateVertical();
+                app(iwage.MODES.IMAGE).transform.translateVertical();
             }
         },
         {
             xtype: 'tbseparator',
-            hidden: app.getMode() == app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('hide', 'show')
+            hidden: iwage.getMode() == iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('hide', 'show')
         },
         {
-            hidden: app.getMode() == app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('hide', 'show'),
+            hidden: iwage.getMode() == iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('hide', 'show'),
             tooltip: 'Rellenar transparencia',
-            icon: app.icon('set_transparent'),
+            icon: iwage.icon('set_transparent'),
             handler: function () {
-                app.tools.launch('FillAlpha');
+                iwage.tools.launch('FillAlpha');
             }
         }
 
     ];
 }
 
-app.view.toolLauncher.getFabricTools = function () {
+iwage.view.toolLauncher.getFabricTools = function () {
     return [
         {
-            icon: app.icon('copy'),
+            icon: iwage.icon('copy'),
             tooltip: 'Copiar',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide'),
-            handler: app(app.MODES.FABRIC).copy
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide'),
+            handler: app(iwage.MODES.FABRIC).copy
         },
         {
-            icon: app.icon('paste'),
+            icon: iwage.icon('paste'),
             tooltip: 'Pegar',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide'),
-            handler: app(app.MODES.FABRIC).paste
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide'),
+            handler: app(iwage.MODES.FABRIC).paste
         },
         {
-            icon: app.icon('delete_cross'),
+            icon: iwage.icon('delete_cross'),
             tooltip: 'Eliminar seleccion actual',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide'),
-            handler: app(app.MODES.FABRIC).removeActive
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide'),
+            handler: app(iwage.MODES.FABRIC).removeActive
         },
         {
             xtype: 'tbseparator',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide')
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide')
         },
         {
-            icon: app.icon('text'),
+            icon: iwage.icon('text'),
             tooltip: 'Crear texto',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide'),
-            handler: app.tools.launcher('Text')
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide'),
+            handler: iwage.tools.launcher('Text')
         },
         {
-            icon: app.icon('beizer'),
+            icon: iwage.icon('beizer'),
             tooltip: 'Agregar graficos vectoriales',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide'),
-            handler: app.tools.launcher('Svg')
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide'),
+            handler: iwage.tools.launcher('Svg')
         },
         {
-            icon: app.icon('image'),
+            icon: iwage.icon('image'),
             tooltip: 'Agregar imagenes',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide'),
-            handler: app.tools.launcher('Image')
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide'),
+            handler: iwage.tools.launcher('Image')
         },
         {
             xtype: 'tbseparator',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide')
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide')
         },
         {
-            icon: app.icon('line'),
+            icon: iwage.icon('line'),
             tooltip: 'Agregar linea',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide'),
-            handler: app(app.MODES.FABRIC).addLine
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide'),
+            handler: app(iwage.MODES.FABRIC).addLine
         },
         {
-            icon: app.icon('rect'),
+            icon: iwage.icon('rect'),
             tooltip: 'Agregar rectangulo',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide'),
-            handler: app(app.MODES.FABRIC).addRect
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide'),
+            handler: app(iwage.MODES.FABRIC).addRect
         },
         {
-            icon: app.icon('triangle'),
+            icon: iwage.icon('triangle'),
             tooltip: 'Agregar triangulo',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide'),
-            handler: app(app.MODES.FABRIC).addTriangle
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide'),
+            handler: app(iwage.MODES.FABRIC).addTriangle
         },
         {
-            icon: app.icon('circle'),
+            icon: iwage.icon('circle'),
             tooltip: 'Agregar circulo',
-            hidden: app.getMode() != app.MODES.FABRIC,
-            listeners: app.util.listenersForMode('show', 'hide'),
-            handler: app(app.MODES.FABRIC).addCircle
+            hidden: iwage.getMode() != iwage.MODES.FABRIC,
+            listeners: iwage.util.listenersForMode('show', 'hide'),
+            handler: app(iwage.MODES.FABRIC).addCircle
         }
     ]
 }

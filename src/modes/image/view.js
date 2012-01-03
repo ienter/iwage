@@ -1,4 +1,4 @@
-app(app.MODES.IMAGE).view = {
+app(iwage.MODES.IMAGE).view = {
     getHTML: function() {
         return '<div class="placeholder result-container" style="display: none"><div id="container">' +
             '<img class="result"' +

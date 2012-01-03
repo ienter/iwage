@@ -1,7 +1,7 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.Appearance', {
-    extend: 'app.fabric.tools.Static',
+Ext.define('iwage.fabric.tools.Appearance', {
+    extend: 'iwage.fabric.tools.Static',
     toolLabel: 'Apariencia',
     buttons: [],
     createControls: function() {
@@ -14,7 +14,7 @@ Ext.define('app.fabric.tools.Appearance', {
                 cls: 'color-picker',
                 fieldLabel: 'Relleno',
                 emptyText: 'Seleccione un color',
-                listeners: app.fabric.tools.Static.prototype.getDefaultListeners()
+                listeners: iwage.fabric.tools.Static.prototype.getDefaultListeners()
             }),
             Ext.create('Ext.ux.colorpicker.ColorPickerField', {
                 disabled: true,
@@ -24,7 +24,7 @@ Ext.define('app.fabric.tools.Appearance', {
                 cls: 'color-picker',
                 fieldLabel: 'Borde',
                 emptyText: 'Seleccione un color',
-                listeners: app.fabric.tools.Static.prototype.getDefaultListeners()
+                listeners: iwage.fabric.tools.Static.prototype.getDefaultListeners()
             }),
             {
                 xtype: 'numberfield',

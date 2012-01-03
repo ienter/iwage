@@ -1,4 +1,4 @@
-app.key = function(keys, action) {
+iwage.key = function(keys, action) {
     var obj;
 
     if (typeof keys == 'string') {
@@ -18,21 +18,21 @@ app.key = function(keys, action) {
 };
 
 $(function() {
-    app.key('ctrl+o', app.file.open);
-    app.key('ctrl+s', app.file.save);
+    iwage.key('ctrl+o', iwage.file.open);
+    iwage.key('ctrl+s', iwage.file.save);
 
-    app.key('ctrl+z', app.history.undo);
-    app.key('ctrl+shift+z', app.history.redo);
+    iwage.key('ctrl+z', iwage.history.undo);
+    iwage.key('ctrl+shift+z', iwage.history.redo);
 
-    app.key('ctrl+c', app.file.copy);
-    app.key('ctrl+v', app.file.paste);
+    iwage.key('ctrl+c', iwage.file.copy);
+    iwage.key('ctrl+v', iwage.file.paste);
 
-    app.key('del', function() {
+    iwage.key('del', function() {
         try {
             app().removeActive();
         } catch(e) {
         }
     });
 
-    app.key('esc', app.cancel);
+    iwage.key('esc', iwage.cancel);
 });

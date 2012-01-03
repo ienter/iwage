@@ -1,13 +1,13 @@
-Ext.ns('app.image.tools');
+Ext.ns('iwage.image.tools');
 
-Ext.define('app.image.tools.Zoom', {
-    mode: app.MODES.IMAGE,
+Ext.define('iwage.image.tools.Zoom', {
+    mode: iwage.MODES.IMAGE,
     toolLabel: 'Zoom',
-    extend: 'app.tools.Static',
+    extend: 'iwage.tools.Static',
     buttons: [
         {
             text: 'Tama&ntilde;o orignal',
-            icon: app.icon('search'),
+            icon: iwage.icon('search'),
             handler: function () {
                 app().view.setZoom(100);
 
@@ -52,7 +52,7 @@ Ext.define('app.image.tools.Zoom', {
         var self = this;
 
         // TODO remover el evento
-        app.on('app:zoom', function (zoom) {
+        iwage.on('app:zoom', function (zoom) {
             self.getComponent().down('#zoom').setValue(zoom);
         });
 

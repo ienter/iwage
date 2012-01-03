@@ -1,8 +1,8 @@
-Ext.ns('app.image.tools');
+Ext.ns('iwage.image.tools');
 
-Ext.define('app.image.tools.RoundedCorners', {
-    extend: 'app.tools.Common',
-    mode: app.MODES.IMAGE,
+Ext.define('iwage.image.tools.RoundedCorners', {
+    extend: 'iwage.tools.Common',
+    mode: iwage.MODES.IMAGE,
     persist: true,
     unique: true,
     toolLabel: 'Bordes Redondeados',
@@ -45,8 +45,8 @@ Ext.define('app.image.tools.RoundedCorners', {
     },
     applyTool: function() {
         // Reemplazar la imagen
-        app.file.set(
-            app.file.imageToDataUri($('.result.rounded').get(0))
+        iwage.file.set(
+            iwage.file.imageToDataUri($('.result.rounded').get(0))
         );
 
         this.destroy();

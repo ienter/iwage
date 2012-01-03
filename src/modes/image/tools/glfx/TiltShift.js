@@ -1,8 +1,8 @@
-Ext.ns('app.image.tools.glfx');
+Ext.ns('iwage.image.tools.glfx');
 
-Ext.define('app.image.tools.glfx.TiltShift', {
+Ext.define('iwage.image.tools.glfx.TiltShift', {
     toolLabel: 'Tilt Shift',
-    extend: 'app.image.tools.glfx.NubFilter',
+    extend: 'iwage.image.tools.glfx.NubFilter',
     createControls: function() {
         return [
             {

@@ -1,27 +1,27 @@
-Ext.ns('app.tools');
+Ext.ns('iwage.tools');
 
-app.tools.BUTTON = {
+iwage.tools.BUTTON = {
     CANCEL: {
         text: 'Cancelar',
-        icon: app.icon('delete_cross'),
+        icon: iwage.icon('delete_cross'),
         handler: function() {
             this.destroy();
         }
     },
     APPLY: {
         text: 'Aplicar',
-        icon: app.icon('tick'),
+        icon: iwage.icon('tick'),
         handler: function() {
             this.applyTool();
         }
     }
 };
 
-Ext.define('app.tools.Common', {
+Ext.define('iwage.tools.Common', {
     unique: true,
     buttons: [
-        app.tools.BUTTON.APPLY,
-        app.tools.BUTTON.CANCEL
+        iwage.tools.BUTTON.APPLY,
+        iwage.tools.BUTTON.CANCEL
     ],
     createControls: function() {
         throw 'Unimplemented method: createControls';
@@ -29,7 +29,7 @@ Ext.define('app.tools.Common', {
     use: function(options) {
         this.renderComponent();
 
-        app.ev.one('app:cancel', function() {
+        iwage.ev.one('app:cancel', function() {
             this.destroy();
         }, this);
     },
@@ -45,7 +45,7 @@ Ext.define('app.tools.Common', {
                 this.component.hide();
             }
         } catch(e) {
-            app.error(e);
+            iwage.error(e);
         }
     },
     show: function() {
@@ -54,7 +54,7 @@ Ext.define('app.tools.Common', {
                 this.component.show();
             }
         } catch(e) {
-            app.error(e);
+            iwage.error(e);
         }
     },
     renderComponent: function() {
@@ -62,7 +62,7 @@ Ext.define('app.tools.Common', {
         this.show();
     },
     createCanvas: function() {
-        return app.file.createCanvas();
+        return iwage.file.createCanvas();
     },
     getComponent: function() {
         var

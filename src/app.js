@@ -2,27 +2,27 @@ function app() {
     var args = arguments;
 
     if (!arguments.length) {
-        return app.mode(app.getMode());
+        return iwage.mode(iwage.getMode());
     }
 
     if (typeof args[0] == 'string') {
-        if (args[0] in app.MODES) {
-            return app.mode(args[0]);
+        if (args[0] in iwage.MODES) {
+            return iwage.mode(args[0]);
         }
 
         return {
             tpl: function(o) {
-                return app.tpl(args[0], o);
+                return iwage.tpl(args[0], o);
             }
         };
     }
 }
 
-app.getMode = function() {
-    return app._mode;
+iwage.getMode = function() {
+    return iwage._mode;
 };
 
-app.tpl = function(str, obj) {
+iwage.tpl = function(str, obj) {
     for (var prop in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, prop)) {
             str = str.replace((new RegExp('\\{' + prop.toString() + '\\}', 'g')), obj[prop] || '');
@@ -34,17 +34,17 @@ app.tpl = function(str, obj) {
     return str;
 };
 
-app._values = {};
+iwage._values = {};
 
-app.set = function(key, value) {
-    return (app._values[key] = value);
+iwage.set = function(key, value) {
+    return (iwage._values[key] = value);
 };
-app.get = function(key) {
-    return app._values[key];
+iwage.get = function(key) {
+    return iwage._values[key];
 };
 
-app.unset = function(key) {
-    return delete app._values[key];
+iwage.unset = function(key) {
+    return delete iwage._values[key];
 };
 
 /**
@@ -52,17 +52,17 @@ app.unset = function(key) {
  *
  * @param {String} namespace
  */
-app.ns = function(namespace) {
+iwage.ns = function(namespace) {
     namespace in app || (app[namespace] = {});
 
-    for (var p in app.MODES) {
+    for (var p in iwage.MODES) {
         p in app || (app[p] = {});
         namespace in app[p] || (app[p][namespace] = {});
 
     }
 };
 
-app.uid = (function() {
+iwage.uid = (function() {
     var map = {};
     return function(prefix) {
         prefix = prefix || 'generated';
@@ -79,7 +79,7 @@ app.uid = (function() {
     }
 })();
 
-app.path = function(path, root) {
+iwage.path = function(path, root) {
     var parts, i, l;
 
     parts = path.split('.');
@@ -95,44 +95,44 @@ app.path = function(path, root) {
     return root;
 }
 
-app.exec = function(method, args) {
+iwage.exec = function(method, args) {
     var ref, context;
 
-    ref = app.path(method);
+    ref = iwage.path(method);
 
     if (!ref) {
-        app.warn('Method ' + method + ' is not implemented (' + app.getMode() + ')');
+        iwage.warn('Method ' + method + ' is not implemented (' + iwage.getMode() + ')');
         return;
     }
 
-    context = app.path(method.replace(/\.[^\.]+$/, ''));
+    context = iwage.path(method.replace(/\.[^\.]+$/, ''));
 
     return ref.apply(context, args);
 };
 
 
-app.alert = function(msg) {
+iwage.alert = function(msg) {
     Ext.MessageBox.alert('Aviso', msg);
 };
 
-Ext.ns('app.tools');
-Ext.ns('app.util');
-Ext.ns('app.fabric');
+Ext.ns('iwage.tools');
+Ext.ns('iwage.util');
+Ext.ns('iwage.fabric');
 
-app.log = function() {
+iwage.log = function() {
     console && console.log.apply(console, arguments);
 };
 
-app.warn = function() {
+iwage.warn = function() {
     console && console.warn.apply(console, arguments);
 };
 
-app.error = function() {
-    app.log('Error ===================================================');
+iwage.error = function() {
+    iwage.log('Error ===================================================');
     console && console.error.apply(console, arguments);
-    app.log('=========================================================');
+    iwage.log('=========================================================');
 
-    app.view.error(arguments[0]);
+    iwage.view.error(arguments[0]);
 };
 
 /**
@@ -140,9 +140,9 @@ app.error = function() {
  *
  * @param {Object} options
  */
-app.start = function(options) {
+iwage.start = function(options) {
     options = Ext.apply({
-        mode: app.MODES.IMAGE,
+        mode: iwage.MODES.IMAGE,
         modes: {
             IMAGE: true,
             FABRIC: true
@@ -156,23 +156,23 @@ app.start = function(options) {
         options.fabricHeight = options['fabric.size'].y;
     }
 
-    app.setMode(options.mode);
-    app.view.start(options);
+    iwage.setMode(options.mode);
+    iwage.view.start(options);
 
-    app.options = options;
+    iwage.options = options;
 
-    if (options.modes[app.MODES.FABRIC]) {
-        app.mode(app.MODES.FABRIC).start(options);
+    if (options.modes[iwage.MODES.FABRIC]) {
+        iwage.mode(iwage.MODES.FABRIC).start(options);
     }
 
     if (options.dataUri) {
-        app.file.set(options.dataUri);
+        iwage.file.set(options.dataUri);
     }
 };
 
-app.mode = function(mode) {
+iwage.mode = function(mode) {
     if (!mode) {
-        mode = app.getMode().toLowerCase();
+        mode = iwage.getMode().toLowerCase();
     }
 
     if (!app[mode]) {
@@ -182,26 +182,26 @@ app.mode = function(mode) {
     return app[mode];
 };
 
-app.eachMode = function(fn) {
-    Ext.iterate(app.MODES, function(mode) {
+iwage.eachMode = function(fn) {
+    Ext.iterate(iwage.MODES, function(mode) {
         fn(app(mode));
     });
 };
 
-app.setMode = function(mode) {
-    app._mode = mode;
-    app.emit('app:mode', mode);
-    app.tools.clear();
-    app.view.centerContainer();
-    app.tools.setMode(mode);
+iwage.setMode = function(mode) {
+    iwage._mode = mode;
+    iwage.emit('app:mode', mode);
+    iwage.tools.clear();
+    iwage.view.centerContainer();
+    iwage.tools.setMode(mode);
 };
 
-app.ev = {
+iwage.ev = {
     _handlers: {},
     on: function(ev, handler, scope) {
         if (Ext.isArray(ev)) {
             Ext.each(ev, function(current) {
-                app.ev.on(current, handler, scope);
+                iwage.ev.on(current, handler, scope);
             });
             return;
         }
@@ -246,27 +246,27 @@ app.ev = {
     }
 };
 
-app.on = function() {
-    app.ev.on.apply(app.ev, arguments);
+iwage.on = function() {
+    iwage.ev.on.apply(iwage.ev, arguments);
 };
 
-app.off = function() {
-    app.ev.off.apply(app.ev, arguments);
+iwage.off = function() {
+    iwage.ev.off.apply(iwage.ev, arguments);
 };
 
-app.emit = function() {
-    app.ev.emit.apply(app.ev, arguments);
+iwage.emit = function() {
+    iwage.ev.emit.apply(iwage.ev, arguments);
 };
 
-app.cancel = function() {
-    app.emit('app:cancel');
+iwage.cancel = function() {
+    iwage.emit('app:cancel');
 };
 
-app.util.listenersForMode = function(onFabricMode, onImageMode) {
+iwage.util.listenersForMode = function(onFabricMode, onImageMode) {
     return {
         afterrender: function(self) {
-            app.on('app:mode', function(mode) {
-                if (mode == app.MODES.FABRIC) {
+            iwage.on('app:mode', function(mode) {
+                if (mode == iwage.MODES.FABRIC) {
                     (typeof onFabricMode == 'function' ? onFabricMode : self[onFabricMode]).call(self);
                 } else {
                     (typeof onImageMode == 'function' ? onImageMode : self[onImageMode]).call(self);
@@ -276,7 +276,7 @@ app.util.listenersForMode = function(onFabricMode, onImageMode) {
     };
 };
 
-app.util.hash = app.hash = function (s) {
+iwage.util.hash = iwage.hash = function (s) {
     return s.toLowerCase().replace(/\s*/, '').split('').reduce(
         function(memo, current, index) {
             return memo + current.charCodeAt(0) * (index + 1);
@@ -284,7 +284,7 @@ app.util.hash = app.hash = function (s) {
 };
 
 
-app.services = {
+iwage.services = {
     imageFromDataUri: function(dataUri, callback) {
         Ext.Ajax.request({
             url: '/webbie_image/ajax_base64_to_image/',
@@ -294,13 +294,13 @@ app.services = {
             success: function(response) {
                 if (response && callback) {
                     try {
-                        app.log('Get: /' + response.responseText);
+                        iwage.log('Get: /' + response.responseText);
                         callback('/' + response.responseText);
                     } catch(e) {
-                        app.error(e);
+                        iwage.error(e);
                     }
                 } else {
-                    app.error('fail: imageFromDataUri');
+                    iwage.error('fail: imageFromDataUri');
                 }
 
             }
@@ -324,7 +324,7 @@ var webbie = {
         try {
             Cufon.registerFont.apply(Cufon, args);
         } catch(e) {
-            app.log(e);
+            iwage.log(e);
             old = webbie.reloadFonts;
 
             if (!old) {
@@ -339,7 +339,7 @@ var webbie = {
         try {
             CufonWebbie.registerFont.apply(CufonWebbie, args);
         } catch(e) {
-            app.log(e);
+            iwage.log(e);
         }
     },
     getCufonWebbie: function() {

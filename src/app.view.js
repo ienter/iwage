@@ -1,26 +1,26 @@
-app.ns('view');
+iwage.ns('view');
 
-app.view = {
+iwage.view = {
     menu:{},
     statusbar:{},
     viewport:{
         instance:null
     },
     setZoom:function (level) {
-        return app.exec('view.setZoom', arguments);
+        return iwage.exec('view.setZoom', arguments);
     },
     getZoom:function () {
-        return app.exec('view.getZoom', arguments);
+        return iwage.exec('view.getZoom', arguments);
     },
     restoreZoom:function () {
-        return app.exec('view.restoreZoom', arguments);
+        return iwage.exec('view.restoreZoom', arguments);
     },
     clearZoom:function () {
-        return app.exec('view.clearZoom', arguments);
+        return iwage.exec('view.clearZoom', arguments);
     }
 };
 
-app.view.adjustContainer = function (delay) {
+iwage.view.adjustContainer = function (delay) {
     setTimeout(function () {
         $('#container')
             .show()
@@ -32,7 +32,7 @@ app.view.adjustContainer = function (delay) {
         );
 
 
-        app.view.centerContainer();
+        iwage.view.centerContainer();
     }, delay || 0);
 };
 
@@ -40,7 +40,7 @@ app.view.adjustContainer = function (delay) {
  *
  * @param delay
  */
-app.view.centerContainer = function (delay, opts) {
+iwage.view.centerContainer = function (delay, opts) {
     var container, result, canvasParent;
 
     opts = opts || {};
@@ -65,7 +65,7 @@ app.view.centerContainer = function (delay, opts) {
     }, delay || 0);
 };
 
-app.view.error = function (e) {
+iwage.view.error = function (e) {
     Ext.Msg.show({
         title:'Woooops!',
         msg:e,
@@ -75,16 +75,16 @@ app.view.error = function (e) {
     });
 };
 
-app.view.start = function () {
+iwage.view.start = function () {
     Ext.QuickTips.init();
 
     Ext.EventManager.onWindowResize(function () {
-        app.emit('app:resize');
+        iwage.emit('app:resize');
     });
 
-    app.on('app:resize', app.view.centerContainer);
+    iwage.on('app:resize', iwage.view.centerContainer);
 
-    app.view.viewport.instance = Ext.create('Ext.container.Viewport', {
+    iwage.view.viewport.instance = Ext.create('Ext.container.Viewport', {
         layout:'border',
         items:[
             {
@@ -92,7 +92,7 @@ app.view.start = function () {
                 height:28,
                 border:false,
                 items:[
-                    app.view.menu.create()
+                    iwage.view.menu.create()
                 ]
             },
             {
@@ -102,34 +102,34 @@ app.view.start = function () {
                 title:'Herramientas',
                 collapsible:true,
                 collapsed:false,
-                items:app.tools.getStatic(),
+                items:iwage.tools.getStatic(),
                 autoScroll:true
             },
             {
                 region:'south',
                 border:false,
                 items:[
-                    app.view.statusbar.create()
+                    iwage.view.statusbar.create()
                 ]
             },
             {
                 region:'center',
                 xtype:'panel',
                 cls:'working-area',
-                lbar:app.view.toolLauncher.getTools(),
+                lbar:iwage.view.toolLauncher.getTools(),
                 border:false,
                 items:[
                     {
                         xtype:'container',
-                        html:app.mode(app.MODES.IMAGE).view.getHTML(),
-                        hidden:app.getMode() == app.MODES.FABRIC,
-                        listeners:app.util.listenersForMode('hide', 'show')
+                        html:iwage.mode(iwage.MODES.IMAGE).view.getHTML(),
+                        hidden:iwage.getMode() == iwage.MODES.FABRIC,
+                        listeners:iwage.util.listenersForMode('hide', 'show')
                     },
                     {
                         xtype:'container',
-                        html:app.mode(app.MODES.FABRIC).view.getHTML(),
-                        hidden:app.getMode() != app.MODES.FABRIC,
-                        listeners:app.util.listenersForMode('show', 'hide')
+                        html:iwage.mode(iwage.MODES.FABRIC).view.getHTML(),
+                        hidden:iwage.getMode() != iwage.MODES.FABRIC,
+                        listeners:iwage.util.listenersForMode('show', 'hide')
                     }
 
                 ]
@@ -138,12 +138,12 @@ app.view.start = function () {
     });
 
     try {
-        app.view.centerContainer(250);
+        iwage.view.centerContainer(250);
     } catch (e) {
     }
 };
 
-app.icons = app.view.icons = {
+iwage.icons = iwage.view.icons = {
     CONFIGURATION:'config_16x16.png',
     BACKGROUND:'background_16x16.png',
     SET_TRANSPARENT:'set_transparent_16x16.png',
@@ -223,15 +223,15 @@ app.icons = app.view.icons = {
     FILTER_EDGEWORK:'filter_edge_16x16.png'
 };
 
-app.icon = app.view.icon = function (icon) {
+iwage.icon = iwage.view.icon = function (icon) {
     var basePath = (typeof _base_url != 'undefined' ? _base_url : '/') + 'images/icons/';
 
-    icon = app.icons[icon.toUpperCase()];
+    icon = iwage.icons[icon.toUpperCase()];
 
     if (!icon) {
-        app.log('icon not found ' + icon);
+        iwage.log('icon not found ' + icon);
 
-        icon = app.icons.HELP;
+        icon = iwage.icons.HELP;
     }
 
     return basePath + icon;

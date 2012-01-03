@@ -1,4 +1,4 @@
-app.transition = {
+iwage.transition = {
 
 };
 
@@ -95,4 +95,4 @@ app.transition = {
         return new ExponencialOut(from, to, min, max);
     };
 
-})(app.transition);
+})(iwage.transition);

@@ -1,8 +1,8 @@
-Ext.ns('app.image.tools');
+Ext.ns('iwage.image.tools');
 
-Ext.define('app.image.tools.Static', {
-    extend: 'app.tools.Static',
-    mode: app.MODES.IMAGE,
+Ext.define('iwage.image.tools.Static', {
+    extend: 'iwage.tools.Static',
+    mode: iwage.MODES.IMAGE,
     refresh: function(itemId, value) {
     }
 });

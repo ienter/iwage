@@ -1,62 +1,62 @@
-app(app.MODES.IMAGE).tools = {
+app(iwage.MODES.IMAGE).tools = {
     onClear: function () {
-        app.file.show();
+        iwage.file.show();
     }
 };
 
-app.mode(app.MODES.IMAGE).transform = {
+iwage.mode(iwage.MODES.IMAGE).transform = {
     translateVertical: function () {
-        app(app.MODES.IMAGE).file.set(
-            app(app.MODES.IMAGE).utils.translateVertical(
+        app(iwage.MODES.IMAGE).file.set(
+            app(iwage.MODES.IMAGE).utils.translateVertical(
                 $('.result').get(0)
             )
         );
     },
     translateHorizontal: function () {
-        app(app.MODES.IMAGE).file.set(
-            app(app.MODES.IMAGE).utils.translateHorizontal(
+        app(iwage.MODES.IMAGE).file.set(
+            app(iwage.MODES.IMAGE).utils.translateHorizontal(
                 $('.result').get(0)
             )
         );
     },
     rotate180: function () {
-        app(app.MODES.IMAGE).file.set(
-            app(app.MODES.IMAGE).utils.rotate180(
+        app(iwage.MODES.IMAGE).file.set(
+            app(iwage.MODES.IMAGE).utils.rotate180(
                 $('.result').get(0)
             )
         );
     },
     rotate90: function () {
-        app(app.MODES.IMAGE).file.set(
-            app(app.MODES.IMAGE).utils.rotate90(
+        app(iwage.MODES.IMAGE).file.set(
+            app(iwage.MODES.IMAGE).utils.rotate90(
                 $('.result').get(0)
             )
         );
     },
     rotateMinus90: function () {
-        app(app.MODES.IMAGE).file.set(
-            app(app.MODES.IMAGE).utils.rotateMinus90(
+        app(iwage.MODES.IMAGE).file.set(
+            app(iwage.MODES.IMAGE).utils.rotateMinus90(
                 $('.result').get(0)
             )
         );
     },
     rotate270: function () {
-        app(app.MODES.IMAGE).file.set(
-            app(app.MODES.IMAGE).utils.rotate270(
+        app(iwage.MODES.IMAGE).file.set(
+            app(iwage.MODES.IMAGE).utils.rotate270(
                 $('.result').get(0)
             )
         );
     },
     reflect: function () {
-        app(app.MODES.IMAGE).file.set(
-            app(app.MODES.IMAGE).utils.reflect(
+        app(iwage.MODES.IMAGE).file.set(
+            app(iwage.MODES.IMAGE).utils.reflect(
                 $('.result').get(0)
             )
         );
     },
     fillAlpha: function (color) {
-        app(app.MODES.IMAGE).file.set(
-            app(app.MODES.IMAGE).utils.fillAlpha(
+        app(iwage.MODES.IMAGE).file.set(
+            app(iwage.MODES.IMAGE).utils.fillAlpha(
                 $('.result').get(0),
                 color
             )
@@ -64,7 +64,7 @@ app.mode(app.MODES.IMAGE).transform = {
     }
 };
 
-app.mode(app.MODES.IMAGE).utils = {};
+iwage.mode(iwage.MODES.IMAGE).utils = {};
 
 (function (utils) {
     utils.canvas = function (width, height) {
@@ -326,7 +326,7 @@ app.mode(app.MODES.IMAGE).utils = {};
 
         var data = imageData.data;
 
-        var easing = app.transition[transition || 'Cuadratic'](0, h - img.height, 0, 255);
+        var easing = iwage.transition[transition || 'Cuadratic'](0, h - img.height, 0, 255);
         var alpha;
 
         // Recorremos los pixeles agregados (img.height - h)
@@ -394,4 +394,4 @@ app.mode(app.MODES.IMAGE).utils = {};
 
         return utils.getImageFromDataUri(canvas.toDataURL('image/png'));
     };
-})(app.mode(app.MODES.IMAGE).utils);
+})(iwage.mode(iwage.MODES.IMAGE).utils);

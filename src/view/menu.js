@@ -1,6 +1,6 @@
-Ext.ns('app.view.menu');
+Ext.ns('iwage.view.menu');
 
-app.view.menu.setMode = function(mode) {
+iwage.view.menu.setMode = function(mode) {
     Ext.getCmp('menu').items.each(function(current) {
         if (!current.mode || current.mode == mode) {
             current.show();
@@ -10,14 +10,14 @@ app.view.menu.setMode = function(mode) {
     });
 };
 
-app.view.menu.create = function() {
+iwage.view.menu.create = function() {
     var menu = {
         xtype: 'toolbar',
         id: 'menu',
         items: []
     };
 
-    app.eachMode(function(mode) {
+    iwage.eachMode(function(mode) {
         if (mode.view && mode.view.menu && mode.view.menu.create) {
             menu.items = menu.items.concat(
                 mode.view.menu.create()
@@ -29,33 +29,33 @@ app.view.menu.create = function() {
         '->',
         {
             text: 'Editor de graficos',
-            icon: app.icon('palette'),
-            disabled: app.getMode() == app.MODES.FABRIC,
+            icon: iwage.icon('palette'),
+            disabled: iwage.getMode() == iwage.MODES.FABRIC,
             handler: function() {
-                app.setMode(app.MODES.FABRIC);
+                iwage.setMode(iwage.MODES.FABRIC);
             },
-            listeners: app.util.listenersForMode('disable', 'enable')
+            listeners: iwage.util.listenersForMode('disable', 'enable')
         },
         '-',
         {
             text: 'Editor de imagenes',
-            icon: app.icon('photo'),
-            disabled: app.getMode() == app.MODES.IMAGE,
+            icon: iwage.icon('photo'),
+            disabled: iwage.getMode() == iwage.MODES.IMAGE,
             handler: function() {
-                app.setMode(app.MODES.IMAGE);
+                iwage.setMode(iwage.MODES.IMAGE);
             },
-            listeners: app.util.listenersForMode('enable', 'disable')
+            listeners: iwage.util.listenersForMode('enable', 'disable')
         }
     ]);
 
     menu.listeners = {
         afterrender: function(self) {
-            app.view.menu.setMode(app.getMode());
+            iwage.view.menu.setMode(iwage.getMode());
         }
     };
 
-    app.on('app:mode', function(mode) {
-        app.view.menu.setMode(app.getMode());
+    iwage.on('app:mode', function(mode) {
+        iwage.view.menu.setMode(iwage.getMode());
     });
 
     return menu;

@@ -1,7 +1,7 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.ImageEditionReady', {
-    extend: 'app.fabric.tools.Static',
+Ext.define('iwage.fabric.tools.ImageEditionReady', {
+    extend: 'iwage.fabric.tools.Static',
     refresh: function(itemId, value) {
 
     },
@@ -14,7 +14,7 @@ Ext.define('app.fabric.tools.ImageEditionReady', {
 
         this.component = Ext.create('Ext.button.Button', {
             text: 'Aplicar cambios',
-            icon: app.icon('tick'),
+            icon: iwage.icon('tick'),
             margin: 5,
             hidden: true,
             width: 260,
@@ -26,11 +26,11 @@ Ext.define('app.fabric.tools.ImageEditionReady', {
         return this.component;
     },
     onModeChanged: function(mode) {
-        if (mode == app.MODES.IMAGE) {
+        if (mode == iwage.MODES.IMAGE) {
             this.hide();
             return;
         }
-        if (!app.get('editing_image_as_fabric')) {
+        if (!iwage.get('editing_image_as_fabric')) {
             this.hide();
             return;
         }
@@ -38,12 +38,12 @@ Ext.define('app.fabric.tools.ImageEditionReady', {
         this.show();
     },
     applyTool: function() {
-        app(app.MODES.IMAGE).file.set(
+        app(iwage.MODES.IMAGE).file.set(
             app().file.getDataUri()
         );
 
-        app.unset('editing_image_as_fabric')
+        iwage.unset('editing_image_as_fabric')
 
-        app.setMode(app.MODES.IMAGE);
+        iwage.setMode(iwage.MODES.IMAGE);
     }
 });

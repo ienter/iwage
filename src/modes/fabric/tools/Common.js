@@ -1,7 +1,7 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.Common', {
-    extend: 'app.tools.Common',
+Ext.define('iwage.fabric.tools.Common', {
+    extend: 'iwage.tools.Common',
     persist: true,
-    mode: app.MODES.FABRIC
+    mode: iwage.MODES.FABRIC
 });

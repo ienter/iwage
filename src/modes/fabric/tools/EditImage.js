@@ -1,7 +1,7 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.fabric.tools.EditImage', {
-    extend: 'app.fabric.tools.Static',
+Ext.define('iwage.fabric.tools.EditImage', {
+    extend: 'iwage.fabric.tools.Static',
     refresh: function(itemId, value) {
 
     },
@@ -14,7 +14,7 @@ Ext.define('app.fabric.tools.EditImage', {
 
         this.component = Ext.create('Ext.button.Button', {
             text: 'Editar en Editor de imagenes',
-            icon: app.icon('photo'),
+            icon: iwage.icon('photo'),
             disabled: true,
             margin: 5,
             width: 260,
@@ -26,12 +26,12 @@ Ext.define('app.fabric.tools.EditImage', {
         return this.component;
     },
     onModeChanged: function(mode) {
-        if (mode != app.MODES.FABRIC) {
+        if (mode != iwage.MODES.FABRIC) {
             this.hide();
             return;
         }
 
-        if (app.get('editing_image_as_fabric')) {
+        if (iwage.get('editing_image_as_fabric')) {
             this.hide();
             return;
         }
@@ -50,23 +50,23 @@ Ext.define('app.fabric.tools.EditImage', {
     },
     editSelection: function() {
         // TODO mover
-        var active = app(app.MODES.FABRIC).topo.getActive();
+        var active = app(iwage.MODES.FABRIC).topo.getActive();
 
         if (!active) {
             return;
         }
 
-        app.set('editing_fabric_as_image', true);
+        iwage.set('editing_fabric_as_image', true);
 
         active.clone(function(clone) {
-            app(app.MODES.FABRIC).imageHolder = clone;
+            app(iwage.MODES.FABRIC).imageHolder = clone;
 
             active.set('angle', 0);
 
             active.toDataURL(function(dataUri) {
-                app.setMode(app.MODES.IMAGE);
-                app.file.set(dataUri);
-                app(app.MODES.FABRIC).topo.remove(active);
+                iwage.setMode(iwage.MODES.IMAGE);
+                iwage.file.set(dataUri);
+                app(iwage.MODES.FABRIC).topo.remove(active);
             });
         });
     }

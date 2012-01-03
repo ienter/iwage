@@ -1,11 +1,11 @@
-Ext.ns('app.image.tools');
+Ext.ns('iwage.image.tools');
 
-Ext.define('app.image.tools.Reflect', {
-    mode:app.MODES.IMAGE,
+Ext.define('iwage.image.tools.Reflect', {
+    mode:iwage.MODES.IMAGE,
     persist:true,
     unique:true,
     toolLabel:'Reflejar',
-    extend:'app.tools.Common',
+    extend:'iwage.tools.Common',
     createControls:function () {
         return [
             {
@@ -64,7 +64,7 @@ Ext.define('app.image.tools.Reflect', {
             .addClass('rounded')
             .appendTo($('.result').parent());
 
-        app.view.centerContainer(0, {
+        iwage.view.centerContainer(0, {
             height:$('.result').height() * modifier
         });
     },
@@ -78,8 +78,8 @@ Ext.define('app.image.tools.Reflect', {
     },
     applyTool:function () {
         // Reemplazar la imagen
-        app.file.set(
-            app.file.imageToDataUri($('.result.rounded').get(0))
+        iwage.file.set(
+            iwage.file.imageToDataUri($('.result.rounded').get(0))
         );
 
         this.destroy();

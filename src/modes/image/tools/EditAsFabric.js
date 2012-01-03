@@ -1,8 +1,8 @@
-Ext.ns('app.image.tools');
+Ext.ns('iwage.image.tools');
 
-Ext.define('app.image.tools.EditAsFabric', {
+Ext.define('iwage.image.tools.EditAsFabric', {
     toolLabel: 'Editar como grafico',
-    extend: 'app.image.tools.Static',
+    extend: 'iwage.image.tools.Static',
     getComponent: function() {
         var tool = this;
 
@@ -12,7 +12,7 @@ Ext.define('app.image.tools.EditAsFabric', {
 
         this.component = Ext.create('Ext.button.Button', {
             text: tool.toolLabel,
-            icon: app.icon('palette'),
+            icon: iwage.icon('palette'),
             margin: 5,
             width: 260,
             handler: function() {
@@ -23,12 +23,12 @@ Ext.define('app.image.tools.EditAsFabric', {
         return this.component;
     },
     onModeChanged: function(mode) {
-        if (mode == app.MODES.FABRIC) {
+        if (mode == iwage.MODES.FABRIC) {
             this.hide();
             return;
         }
 
-        if (app.get('editing_fabric_as_image')) {
+        if (iwage.get('editing_fabric_as_image')) {
             this.hide();
             return;
         }
@@ -37,30 +37,30 @@ Ext.define('app.image.tools.EditAsFabric', {
     },
     // TODO mover logica a donde corresponda
     editSelection: function() {
-        var dataUri = app.file.getDataUri();
-        var topo = app(app.MODES.FABRIC).topo;
+        var dataUri = iwage.file.getDataUri();
+        var topo = app(iwage.MODES.FABRIC).topo;
 
-        app(app.MODES.FABRIC).clear();
+        app(iwage.MODES.FABRIC).clear();
 
-        app.set('editing_image_as_fabric', true);
+        iwage.set('editing_image_as_fabric', true);
 
         //topo.clear()
 
         topo.setHeight(
-            app.file.getHeight()
+            iwage.file.getHeight()
         );
 
         topo.setWidth(
-            app.file.getWidth()
+            iwage.file.getWidth()
         );
 
-        app.view.centerContainer();
+        iwage.view.centerContainer();
 
-        app.services.imageFromDataUri(dataUri, function(link) {
+        iwage.services.imageFromDataUri(dataUri, function(link) {
             try {
                 fabric.Image.fromURL(link, function(image) {
                     try {
-                        app.setMode(app.MODES.FABRIC);
+                        iwage.setMode(iwage.MODES.FABRIC);
 
                         setTimeout(function () {
                             image.set({
@@ -73,11 +73,11 @@ Ext.define('app.image.tools.EditAsFabric', {
                             topo.setActiveObject(image);
                         }, 500)
                     } catch(e) {
-                        app.error(e);
+                        iwage.error(e);
                     }
                 });
             } catch(e) {
-                app.error(e);
+                iwage.error(e);
             }
 
         });

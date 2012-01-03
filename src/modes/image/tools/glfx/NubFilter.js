@@ -1,9 +1,9 @@
-Ext.ns('app.image.tools.glfx');
+Ext.ns('iwage.image.tools.glfx');
 /**
  *
  */
-Ext.define('app.image.tools.glfx.NubFilter', {
-    extend: 'app.image.tools.glfx.Common',
+Ext.define('iwage.image.tools.glfx.NubFilter', {
+    extend: 'iwage.image.tools.glfx.Common',
     createNubs: function() {
         // TODO reciclar el contenedor #nubs
         // $('<div/>').attr('id', 'nubs').appendTo();

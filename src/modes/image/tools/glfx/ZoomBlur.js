@@ -1,8 +1,8 @@
-Ext.ns('app.image.tools.glfx');
+Ext.ns('iwage.image.tools.glfx');
 
-Ext.define('app.image.tools.glfx.ZoomBlur', {
+Ext.define('iwage.image.tools.glfx.ZoomBlur', {
     toolLabel: 'Zoom Blur',
-    extend: 'app.image.tools.glfx.NubFilter',
+    extend: 'iwage.image.tools.glfx.NubFilter',
     createControls: function() {
         return [
             {

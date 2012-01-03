@@ -1,13 +1,13 @@
-Ext.ns('app.fabric.tools');
+Ext.ns('iwage.fabric.tools');
 
-Ext.define('app.image.tools.Open', {
-    extend: 'app.tools.Open',
+Ext.define('iwage.image.tools.Open', {
+    extend: 'iwage.tools.Open',
     toolLabel: 'Imagen',
     applyTool: function(imagePath) {
         if(Ext.isArray(imagePath)) {
             imagePath = imagePath[0];
         }
 
-        app.file.openUrl(imagePath);
+        iwage.file.openUrl(imagePath);
     }
 });

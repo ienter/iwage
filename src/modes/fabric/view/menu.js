@@ -1,4 +1,4 @@
-app(app.MODES.FABRIC).view.menu = {
+app(iwage.MODES.FABRIC).view.menu = {
     createFileMenu: function() {
         return {
             text: 'Archivo',
@@ -6,34 +6,34 @@ app(app.MODES.FABRIC).view.menu = {
                 items: [
                     {
                         text: 'Abrir <span class="shortcut">(ctrl + o)</span>',
-                        icon: app.icon('open'),
-                        handler: app.file.open
+                        icon: iwage.icon('open'),
+                        handler: iwage.file.open
                     },
                     {
                         text: 'Guardar <span class="shortcut">(ctrl + s)</span>',
-                        icon: app.icon('save'),
-                        handler: app.file.save
+                        icon: iwage.icon('save'),
+                        handler: iwage.file.save
                     },
                     '-',
                     {
                         text: 'Previsualizar',
-                        icon: app.icon('preview'),
+                        icon: iwage.icon('preview'),
                         handler: function() {
-                            app(app.MODES.FABRIC).preview();
+                            app(iwage.MODES.FABRIC).preview();
                         }
                     },
                     {
                         text: 'Instalar',
-                        icon: app.icon('tick'),
+                        icon: iwage.icon('tick'),
                         handler: function() {
-                            app(app.MODES.FABRIC).install();
+                            app(iwage.MODES.FABRIC).install();
                         }
                     },
                     {
                         text: 'Descargar',
-                        icon: app.icon('download'),
+                        icon: iwage.icon('download'),
                         handler: function() {
-                            app.file.viewAsImage();
+                            iwage.file.viewAsImage();
                         }
                     }
                 ]
@@ -46,41 +46,41 @@ app(app.MODES.FABRIC).view.menu = {
             menu: {
                 items:[
                     {
-                        icon: app.icon('undo'),
+                        icon: iwage.icon('undo'),
                         text: 'Deshacer <span class="shortcut">(ctrl + z)</span>',
-                        handler: app.history.undo
+                        handler: iwage.history.undo
                     },
                     {
-                        icon: app.icon('redo'),
+                        icon: iwage.icon('redo'),
                         text: 'Rehacer <span class="shortcut">(ctrl + shift + z)</span>',
-                        handler: app.history.redo
+                        handler: iwage.history.redo
                     },
                     '-',
                     {
                         text: 'Volver al original',
-                        icon: app.icon('bin'),
-                        handler: app.history.backToOriginal
+                        icon: iwage.icon('bin'),
+                        handler: iwage.history.backToOriginal
                     },
                     {
-                        icon: app.icon('copy'),
+                        icon: iwage.icon('copy'),
                         text: 'Copiar objeto <span class="shortcut">(ctrl + v)</span>',
-                        handler: app.fabric.copy
+                        handler: iwage.fabric.copy
                     },
                     {
-                        icon: app.icon('paste'),
+                        icon: iwage.icon('paste'),
                         text: 'Pegar <span class="shortcut">(ctrl + c)</span>',
-                        handler: app.fabric.paste
+                        handler: iwage.fabric.paste
                     },
                     {
-                        icon: app.icon('delete_cross'),
+                        icon: iwage.icon('delete_cross'),
                         text: 'Eliminar objeto <span class="shortcut">(supr)</span>',
-                        handler: app.fabric.removeActive
+                        handler: iwage.fabric.removeActive
                     },
                     '-',
                     {
-                        icon: app.icon('margins'),
+                        icon: iwage.icon('margins'),
                         text: 'Configurar tama&ntilde;o del lienzo',
-                        handler: app.tools.launcher('Configuration')
+                        handler: iwage.tools.launcher('Configuration')
                     }
 
                 ]
@@ -90,7 +90,7 @@ app(app.MODES.FABRIC).view.menu = {
     create: function() {
         var menu, self;
 
-        self = app(app.MODES.FABRIC).view.menu;
+        self = app(iwage.MODES.FABRIC).view.menu;
 
         menu = [];
 
@@ -99,7 +99,7 @@ app(app.MODES.FABRIC).view.menu = {
         menu.push(self.createEditMenu());
 
         Ext.each(menu, function(current) {
-            current.mode = app.MODES.FABRIC;
+            current.mode = iwage.MODES.FABRIC;
         });
 
         return menu;

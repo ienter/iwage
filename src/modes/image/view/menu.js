@@ -1,4 +1,4 @@
-app(app.MODES.IMAGE).view.menu = {
+app(iwage.MODES.IMAGE).view.menu = {
     createFileMenu: function () {
         return {
             text: 'Archivo',
@@ -6,20 +6,20 @@ app(app.MODES.IMAGE).view.menu = {
                 items: [
                     {
                         text: 'Abrir <span class="shortcut">(ctrl + o)</span>',
-                        icon: app.icon('open'),
-                        handler: app.file.open
+                        icon: iwage.icon('open'),
+                        handler: iwage.file.open
                     },
                     {
                         text: 'Guardar <span class="shortcut">(ctrl + s)</span>',
-                        icon: app.icon('save'),
-                        handler: app.file.save
+                        icon: iwage.icon('save'),
+                        handler: iwage.file.save
                     },
                     '-',
                     {
                         text: 'Ver imagen',
-                        icon: app.icon('preview'),
+                        icon: iwage.icon('preview'),
                         handler: function () {
-                            app.file.viewAsImage();
+                            iwage.file.viewAsImage();
                         }
                     }
                 ]
@@ -32,26 +32,26 @@ app(app.MODES.IMAGE).view.menu = {
             menu: {
                 items: [
                     {
-                        icon: app.icon('undo'),
+                        icon: iwage.icon('undo'),
                         text: 'Deshacer <span class="shortcut">(ctrl + z)</span>',
-                        handler: app.history.undo
+                        handler: iwage.history.undo
                     },
                     {
-                        icon: app.icon('redo'),
+                        icon: iwage.icon('redo'),
                         text: 'Rehacer <span class="shortcut">(ctrl + shift + z)</span>',
-                        handler: app.history.redo
+                        handler: iwage.history.redo
                     },
                     '-',
                     {
                         text: 'Volver al original',
-                        icon: app.icon('bin'),
-                        handler: app.history.backToOriginal
+                        icon: iwage.icon('bin'),
+                        handler: iwage.history.backToOriginal
                     },
                     '-',
                     {
                         text: 'Recortar',
-                        icon: app.icon('crop'),
-                        handler: app.tools.launcher('Crop')
+                        icon: iwage.icon('crop'),
+                        handler: iwage.tools.launcher('Crop')
                     }
                 ]
             }
@@ -64,61 +64,61 @@ app(app.MODES.IMAGE).view.menu = {
                 items: [
                     {
                         text: 'Rellenar transparencias',
-                        icon: app.icon('set_transparent'),
+                        icon: iwage.icon('set_transparent'),
                         handler: function () {
-                            app.tools.launch('FillAlpha');
+                            iwage.tools.launch('FillAlpha');
                         }
                     },
                     '-',
                     {
                         text: 'Brillo / Contraste',
-                        icon: app.icon('filter_BrightnessContrast'),
+                        icon: iwage.icon('filter_BrightnessContrast'),
                         handler: function () {
-                            app.tools.launch('glfx.BrightnessContrast');
+                            iwage.tools.launch('glfx.BrightnessContrast');
                         }
                     },
                     {
                         text: 'Hue / Saturaci&oacute;n',
-                        icon: app.icon('filter_HueSaturation'),
+                        icon: iwage.icon('filter_HueSaturation'),
                         handler: function () {
-                            app.tools.launch('glfx.HueSaturation');
+                            iwage.tools.launch('glfx.HueSaturation');
                         }
                     },
                     '-',
                     {
                         text: 'Rotar a la izquierda',
-                        icon: app.icon('rotate_anticlockwise'),
+                        icon: iwage.icon('rotate_anticlockwise'),
                         handler: function () {
-                            app(app.MODES.IMAGE).transform.rotateMinus90();
+                            app(iwage.MODES.IMAGE).transform.rotateMinus90();
                         }
                     },
                     {
                         text: 'Rotar a la derecha',
-                        icon: app.icon('rotate_clockwise'),
+                        icon: iwage.icon('rotate_clockwise'),
                         handler: function () {
-                            app(app.MODES.IMAGE).transform.rotate90();
+                            app(iwage.MODES.IMAGE).transform.rotate90();
                         }
                     },
                     {
                         text: 'Reflejar horizontalmente',
-                        icon: app.icon('flip_horizontal'),
+                        icon: iwage.icon('flip_horizontal'),
                         handler: function () {
-                            app(app.MODES.IMAGE).transform.translateHorizontal();
+                            app(iwage.MODES.IMAGE).transform.translateHorizontal();
                         }
                     },
                     {
                         text: 'Reflejar verticalmente',
-                        icon: app.icon('flip_vertical'),
+                        icon: iwage.icon('flip_vertical'),
                         handler: function () {
-                            app(app.MODES.IMAGE).transform.translateVertical();
+                            app(iwage.MODES.IMAGE).transform.translateVertical();
                         }
                     },
                     '-',
                     {
                         text: 'Bordes Redondeados',
-                        icon: app.icon('rounded'),
+                        icon: iwage.icon('rounded'),
                         handler: function () {
-                            app.tools.launch('RoundedCorners');
+                            iwage.tools.launch('RoundedCorners');
                         }
                     }
                 ]
@@ -128,7 +128,7 @@ app(app.MODES.IMAGE).view.menu = {
     createFiltersMenu: function () {
         var menu = [];
 
-        Ext.iterate(app.image.tools.glfx, function (key, value, all) {
+        Ext.iterate(iwage.image.tools.glfx, function (key, value, all) {
             if (!value.prototype.toolLabel || typeof value != 'function') {
                 return;
             }
@@ -139,9 +139,9 @@ app(app.MODES.IMAGE).view.menu = {
 
             menu.push({
                 text: value.prototype.toolLabel,
-                icon: app.icon('filter_' + key),
+                icon: iwage.icon('filter_' + key),
                 handler: function () {
-                    app.tools.launch('glfx.' + key);
+                    iwage.tools.launch('glfx.' + key);
                 }
             });
         });
@@ -158,7 +158,7 @@ app(app.MODES.IMAGE).view.menu = {
     createEffectsMenu: function () {
         var menu = [];
 
-        Ext.iterate(app.image.tools.glfx, function (key, value, all) {
+        Ext.iterate(iwage.image.tools.glfx, function (key, value, all) {
             if (!value.prototype.toolLabel || typeof value != 'function') {
                 return;
             }
@@ -169,18 +169,18 @@ app(app.MODES.IMAGE).view.menu = {
 
             menu.push({
                 text: value.prototype.toolLabel,
-                icon: app.icon('filter_' + key),
+                icon: iwage.icon('filter_' + key),
                 handler: function () {
-                    app.tools.launch('glfx.' + key);
+                    iwage.tools.launch('glfx.' + key);
                 }
             });
         });
 
         menu.push({
             text: 'Reflejar',
-            icon: app.icon('reflection'),
+            icon: iwage.icon('reflection'),
             handler: function () {
-                app.tools.launch('Reflect');
+                iwage.tools.launch('Reflect');
             }
         });
 
@@ -196,7 +196,7 @@ app(app.MODES.IMAGE).view.menu = {
     create: function () {
         var menu, self;
 
-        self = app(app.MODES.IMAGE).view.menu;
+        self = app(iwage.MODES.IMAGE).view.menu;
 
         menu = [];
 
@@ -212,7 +212,7 @@ app(app.MODES.IMAGE).view.menu = {
 
 
         Ext.each(menu, function (current) {
-            current.mode = app.MODES.IMAGE;
+            current.mode = iwage.MODES.IMAGE;
         });
 
         return menu;
