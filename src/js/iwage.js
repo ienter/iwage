@@ -53,11 +53,11 @@ iwage.unset = function(key) {
  * @param {String} namespace
  */
 iwage.ns = function(namespace) {
-    namespace in app || (app[namespace] = {});
+    namespace in iwage || (iwage[namespace] = {});
 
     for (var p in iwage.MODES) {
-        p in app || (app[p] = {});
-        namespace in app[p] || (app[p][namespace] = {});
+        p in iwage || (iwage[p] = {});
+        namespace in iwage[p] || (iwage[p][namespace] = {});
 
     }
 };
@@ -175,11 +175,11 @@ iwage.mode = function(mode) {
         mode = iwage.getMode().toLowerCase();
     }
 
-    if (!app[mode]) {
-        app[mode] = {};
+    if (!iwage[mode]) {
+        iwage[mode] = {};
     }
 
-    return app[mode];
+    return iwage[mode];
 };
 
 iwage.eachMode = function(fn) {

@@ -1,52 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Editor</title>
+    <title>Ienter - Iwage</title>
 
     <link rel="stylesheet" href="../src/css/iwage.css">
-    <link rel="stylesheet" href="/js/ext4/resources/css/ext-all.css">
+    <link rel="stylesheet" href="../vendor/ext4/resources/css/ext-all.css">
 
-    <script type="text/javascript" src="/js/ext4/ext-all.js"></script>
+    <script type="text/javascript" src="../vendor/ext4/ext-all.js"></script>
+    <script type="text/javascript" src="../vendor/jquery/jquery-1.7.js"></script>
+    <script type="text/javascript" src="../vendor/keymaster/keymaster.min.js"></script>
 
-    <script type="text/javascript" src="/js/jquery/jquery-1.7.js"></script>
-
-    <script type="text/javascript" src="/js/libs/keymaster/keymaster.js"></script>
-    <script type="text/javascript" src="/js/libs/Jcrop/jquery.color.js"></script>
-    <script type="text/javascript" src="/js/libs/Jcrop/jquery.Jcrop.js"></script>
-
-    <script type="text/javascript" src="/js/image_editor/app/app.js"></script>
-    <script type="text/javascript" src="/js/image_editor/app/app.modes.js"></script>
-    <script type="text/javascript" src="/js/image_editor/app/app.tools.js"></script>
-
-    <script type="text/javascript" src="/js/image_editor/app/app.history.js"></script>
-    <script type="text/javascript" src="/js/image_editor/app/app.file.js"></script>
-    <script type="text/javascript" src="/js/image_editor/app/app.view.js"></script>
-    <script type="text/javascript" src="/js/image_editor/app/app.keybinding.js"></script>
-    <script type="text/javascript" src="/js/image_editor/app/app.transition.js"></script>
-
-    <script type="text/javascript" src="/js/image_editor/app/view/menu.js"></script>
-
-    <script type="text/javascript" src="/js/image_editor/app/view/statusbar.js"></script>
-    <script type="text/javascript" src="/js/image_editor/app/view/toolLauncher.js"></script>
-
-    <script type="text/javascript" src="/js/image_editor/app/tools/Common.js"></script>
-    <script type="text/javascript" src="/js/image_editor/app/tools/Static.js"></script>
-
-    <script type="text/javascript" src="/js/image_editor/app/tools/Open.js"></script>
-
+    <script type="text/javascript" src="../dist/iwage.all.js"></script>
 
     <script>
         Ext.onReady(function () {
-            app.start({
-                "mode":"FABRIC",
-                "galleryProxy":"\/webbie_image\/ajax_get_gallery_images",
-                "fabricProxy":"\/webbie_image\/logo_list",
-                "fabricVerifyName":"\/webbie_image\/verify_logo_save_name",
-                "fabricSaveProxy":"\/webbie_image\/logo_save",
-                "fabricInstallProxy":"\/webbie_image\/install_logo",
-                "svgProxy":"\/webbie_image\/ajax_get_svg_images",
-                "fabric.size":{"x":300, "y":150, "mime":""}
-            });
+            iwage.start();
         });
     </script>
 </head>
