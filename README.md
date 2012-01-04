@@ -78,6 +78,13 @@ Graphic Editing Features:
 * glfx.js
 * ExtJs
 
+### Supported browsers
+
+- Firefox 2+
+- Safari 3+
+- Opera 9.64+
+- Chrome (all versions should work)
+- IE9+
 
 Copyright (c) 2011 <a href="http://ienter.net">Ienter</a> (see LICENSE)
 
