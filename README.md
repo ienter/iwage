@@ -6,7 +6,7 @@ A HTML5 Image and Graphic Editor.
 ![Iwage Screenshot](iwage/raw/master/screenshot.png)
 
 
-Iwage is web application to create and edit graphics and images. You can used to edit your images or to create graphics right on your browser. Create graphics by adding text, forms, or images. Then you can edit your graphic as an image. Edit an image by cropping it or by adding differents filters or effects.
+Iwage is web application to create and edit graphics and images. You can use it to edit your images or to create graphics right on your browser. Create graphics by adding text, forms, or images. Then you can edit your graphic as an image. Edit an image by cropping it or by adding differents filters or effects.
       
 ### Image Editing Features
 
