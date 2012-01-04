@@ -73,7 +73,7 @@ Graphic Editing Features:
 
 * WebGL
 * Canvas
-* File Api
+* HTML5 File Api
 * fabric.js
 * glfx.js
 * ExtJs
