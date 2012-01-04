@@ -1,10 +1,17 @@
 Iwage
-=====
-<img src="IWAGE/raw/master/screenshot.png" alt="iwage Editor Screenshot" width="800" style="display: block; margin-left: auto; margin-right: auto;"/>
+==
+![Iwage Screenshot](iwage/raw/master/screenshot.png)
 
 A HTML5 Image and Graphic Editor.
 
 Iwage is web application to create and edit graphics and images.
+
+Author:: IEnter
+Copyright:: Copyright (c) 2011 IEnter S.A.
+License:: MIT License
+WebSite:: http://www.ienter.net
+Team:: Valentín Starck (Developer), Adrián E. Piñeyro (Product/Project Manager)
+      
 
 Image Editing Features
 ----------------------
