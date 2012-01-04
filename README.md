@@ -1,22 +1,26 @@
 Iwage
 ==
+A HTML5 Image and Graphic Editor.
+
 ![Iwage Screenshot](iwage/raw/master/screenshot.png)
 
-A HTML5 Image and Graphic Editor.
+
 
 Iwage is web application to create and edit graphics and images.
 
-Author:: IEnter
-Copyright:: Copyright (c) 2011 IEnter S.A.
-License:: MIT License
-WebSite:: http://www.ienter.net
-Team:: Valentín Starck (Developer), Adrián E. Piñeyro (Product/Project Manager)
+**Author:** IEnter
+
+**Copyright:** Copyright (c) 2011 IEnter S.A.
+
+**License:** MIT License
+
+**WebSite:** http://www.ienter.net
+
+**Team:** Valentín Starck (Developer), Adrián E. Piñeyro (Product/Project Manager)
       
+### Image Editing Features
 
-Image Editing Features
-----------------------
-
-### Main:
+**Main:**
 
 * Open Image without upload
 * Save in different sizes
@@ -24,7 +28,8 @@ Image Editing Features
 * Back To Original Image (Undo anything)
 * Edit as a Graphic
 
-### Adjusments:
+**Adjustments:**
+
 * Background Color (when transparent is present)
 * Brightness and Contrast controls
 * Hue and Saturation controls
@@ -32,7 +37,8 @@ Image Editing Features
 * Invert (Horizontal & Vertical)
 * Roundly corners
 
-### Filters:
+**Filters:**
+
 * Color Halftone
 * Denoise
 * Dot Screen
@@ -47,27 +53,31 @@ Image Editing Features
 * Vibrance
 * Vignette
 
-### Effects:
+**Effects:**
+
 * Bulge/Pinch
 * Reflection
 * Swirl
 * Tilt Shift
 * Zoom Blur
 
-Graphic Editing Features:
--------------------------
+### Graphic Editing Features:
 
-### Main:
+
+**Main:**
+
 * Open From JSON (Editable Graphic)
 * Save To JSON
 * Edit as a Image
 
-### Graphics Manipulation:
+**Graphics Manipulation:**
+
 * Undo & Redo
 * Copy & Paste
 * Change canvas size
 
-### Adding Graphics:
+**Adding Graphics:**
+
 * Text
 * SVG
 * Images
@@ -76,7 +86,7 @@ Graphic Editing Features:
 * Triangle
 * Circle
 
-### Technologies & Libraries:
+**Technologies & Libraries:**
 
 * WebGL
 * Canvas
@@ -85,7 +95,7 @@ Graphic Editing Features:
 * glfx.js
 * ExtJs
 
-### Supported browsers
+**Supported browsers:**
 
 - Firefox 2+
 - Safari 3+
@@ -93,9 +103,7 @@ Graphic Editing Features:
 - Chrome (all versions should work)
 - IE9+
 
-Copyright (c) 2011 <a href="http://ienter.net">Ienter</a> (see LICENSE)
-
-### TODO
+**TODO**
 
 * Add a live demo.
 * Remove jQuery (and jQuery UI).
