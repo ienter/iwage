@@ -1,5 +1,7 @@
 IWAGE
 =====
+<img scr="IWAGE/raw/master/screenshot.png" alt="IWAGE Editor Screenshot" width="800" />.
+
 A HTML5 Image and Graphic Editor.
 
 IWAGE is web application to create and edit graphics and images.
