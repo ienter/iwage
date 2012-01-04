@@ -224,7 +224,7 @@ iwage.icons = iwage.view.icons = {
 };
 
 iwage.icon = iwage.view.icon = function (icon) {
-    var basePath = (typeof _base_url != 'undefined' ? _base_url : '/') + 'images/icons/';
+    var basePath =  '../src/images/icons/';
 
     icon = iwage.icons[icon.toUpperCase()];
 

@@ -1,3 +1,986 @@
+//     keymaster.js
+//     (c) 2011 Thomas Fuchs
+//     keymaster.js may be freely distributed under the MIT license.
+(function(a){function h(a,b){var c=a.length;while(c--)if(a[c]===b)return c;return-1}function i(a){var b,g,i,j,k,m;g=(a.target||a.srcElement).tagName,b=a.keyCode;if(b==93||b==224)b=91;if(b in d){d[b]=!0;for(j in f)f[j]==b&&(l[j]=!0);return}if(g=="INPUT"||g=="SELECT"||g=="TEXTAREA")return;if(!(b in c))return;for(k=0;k<c[b].length;k++){i=c[b][k];if(i.scope==e||i.scope=="all"){m=i.mods.length>0;for(j in d)if(!d[j]&&h(i.mods,+j)>-1||d[j]&&h(i.mods,+j)==-1)m=!1;(i.mods.length==0&&!d[16]&&!d[18]&&!d[17]&&!d[91]||m)&&i.method(a,i)===!1&&(a.preventDefault?a.preventDefault():a.returnValue=!1,a.stopPropagation&&a.stopPropagation(),a.cancelBubble&&(a.cancelBubble=!0))}}}function j(a){var b=a.keyCode,c;if(b==93||b==224)b=91;if(b in d){d[b]=!1;for(c in f)f[c]==b&&(l[c]=!1)}}function k(){for(b in d)d[b]=!1;for(b in f)l[b]=!1}function l(a,b,d){var e,h,i,j;d===undefined&&(d=b,b="all"),a=a.replace(/\s/g,""),e=a.split(","),e[e.length-1]==""&&(e[e.length-2]+=",");for(i=0;i<e.length;i++){h=[],a=e[i].split("+");if(a.length>1){h=a.slice(0,a.length-1);for(j=0;j<h.length;j++)h[j]=f[h[j]];a=[a[a.length-1]]}a=a[0],a=g[a]||a.toUpperCase().charCodeAt(0),a in c||(c[a]=[]),c[a].push({shortcut:e[i],scope:b,method:d,key:e[i],mods:h})}}function m(a){e=a||"all"}function n(){return e||"all"}function o(a,b,c){a.addEventListener?a.addEventListener(b,c,!1):a.attachEvent&&a.attachEvent("on"+b,function(){c(window.event)})}var b,c={},d={16:!1,18:!1,17:!1,91:!1},e="all",f={"⇧":16,shift:16,"⌥":18,alt:18,option:18,"⌃":17,ctrl:17,control:17,"⌘":91,command:91},g={backspace:8,tab:9,clear:12,enter:13,"return":13,esc:27,escape:27,space:32,left:37,up:38,right:39,down:40,del:46,"delete":46,home:36,end:35,pageup:33,pagedown:34,",":188,".":190,"/":191,"`":192,"-":189,"=":187,";":186,"'":222,"[":219,"]":221,"\\":220};for(b=1;b<20;b++)f["f"+b]=111+b;for(b in f)l[b]=!1;o(document,"keydown",i),o(document,"keyup",j),o(window,"focus",k),a.key=l,a.key.setScope=m,a.key.getScope=n,typeof module!="undefined"&&(module.exports=key)})(this)
+Ext.define('Ext.ux.colorpicker.ColorPicker', {
+    extend : 'Ext.container.Container',
+    alias : 'widget.ux.colorpicker',
+    width : 350,
+    config : {
+        hsv : {
+            h : 0,
+            s : 0,
+            v : 0
+        }
+    },
+    items : [
+        {
+            xtype : 'container',
+            itemId : 'cRgb',
+            cls : 'x-cp-rgbpicker',
+            items : [
+                {
+                    xtype : 'container',
+                    itemId : 'rgbPicker',
+                    cls : 'x-cp-rgbslider',
+                    width : 15,
+                    height : 15
+                }
+            ]
+        },
+        {
+            xtype : 'container',
+            itemId : 'cHue',
+            cls : 'x-cp-huepicker',
+            items : [
+                {
+                    xtype : 'container',
+                    itemId : 'huePicker',
+                    cls : 'x-cp-hueslider',
+                    width : 15,
+                    height : 15
+                }
+            ]
+        },
+        {
+            xtype : 'form',
+            itemId : 'cForm',
+            border : false,
+            cls : 'x-cp-formcontainer',
+            items : [
+                {
+                    layout : 'column',
+                    border : false,
+                    items : [
+                        {
+                            layout : 'anchor',
+                            border : false,
+                            defaultType : 'numberfield',
+                            defaults : {
+                                anchor : '99%',
+                                labelWidth : 10,
+                                value : 0,
+                                minValue : 0,
+                                maxValue : 255,
+                                labelSeparator : '',
+                                hideTrigger : true
+                            },
+                            columnWidth : .5,
+                            items : [
+                                {
+                                    fieldLabel : 'R',
+                                    itemId : 'iRed'
+                                },
+                                {
+                                    fieldLabel : 'G',
+                                    itemId : 'iGreen'
+                                },
+                                {
+                                    fieldLabel : 'B',
+                                    itemId : 'iBlue'
+                                }
+                            ]
+                        },
+                        {
+                            layout : 'anchor',
+                            border : false,
+                            defaultType : 'numberfield',
+                            defaults : {
+                                anchor : '99%',
+                                labelWidth : 10,
+                                value : 0,
+                                minValue : 0,
+                                maxValue : 255,
+                                labelSeparator : '',
+                                hideTrigger : true
+                            },
+                            columnWidth : .5,
+                            items : [
+                                {
+                                    fieldLabel : 'H',
+                                    itemId : 'iHue',
+                                    maxValue : 360
+                                },
+                                {
+                                    fieldLabel : 'S',
+                                    itemId : 'iSat'
+                                },
+                                {
+                                    fieldLabel : 'V',
+                                    itemId : 'iVal'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    layout : {
+                        type : 'hbox',
+                        align : 'top'
+                    },
+                    width: 120,
+                    border : false,
+                    defaults : {
+                        labelWidth : 10,
+                        labelSeparator : ''
+                    },
+                    items : [
+                        {
+                            xtype : 'textfield',
+                            fieldLabel : '#',
+                            itemId : 'iHexa',
+                            width: 75
+                        },
+                        {
+                            xtype: 'checkbox',
+                            width: 40,
+                            fieldLabel: '<span class="icon-transparent" style="display: block; height: 16px; width: 16px; margin-left: 3px">&nbsp;</span>',
+                            itemId: 'iTransparent'
+                        }
+                    ]
+                },
+                {
+                    defaultType : 'container',
+                    border : false,
+                    items : [
+                        {
+                            layout : {
+                                type : 'hbox',
+                                align : 'top'
+                            },
+                            defaultType : 'container',
+                            items : [
+                                {
+                                    width : 30,
+                                    height : 25,
+                                    itemId : 'cWebsafe'
+                                },
+                                {
+                                    cls : 'x-cp-leftarrow'
+                                },
+                                {
+                                    xtype : 'button',
+                                    text : 'Websafe',
+                                    itemId : 'bWebsafe',
+                                    flex : 1
+                                }
+                            ]
+                        },
+                        {
+                            layout : {
+                                type : 'hbox',
+                                align : 'middle'
+                            },
+                            defaultType : 'container',
+                            items : [
+                                {
+                                    width : 30,
+                                    height : 25,
+                                    itemId : 'cInverse'
+                                },
+                                {
+                                    cls : 'x-cp-leftarrow'
+                                },
+                                {
+                                    xtype : 'button',
+                                    text : 'Inverso',
+                                    itemId : 'bInverse',
+                                    flex : 1
+                                }
+                            ]
+                        },
+                        {
+                            layout : {
+                                type : 'hbox',
+                                align : 'middle'
+                            },
+                            defaultType : 'container',
+                            items : [
+                                {
+                                    width : 30,
+                                    height : 25,
+                                    itemId : 'cSelect'
+                                },
+                                {
+                                    cls : 'x-cp-leftarrow'
+                                },
+                                {
+                                    xtype : 'button',
+                                    text : 'Seleccionar',
+                                    itemId : 'bSelect',
+                                    flex : 1
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    constructor : function(config) {
+        var me = this;
+        me.initConfig(config);
+        me.addEvents('select');
+        me.callParent(arguments);
+
+        return this;
+    },
+    afterRender : function(component) {
+        var me = this;
+        me.callParent(arguments);
+
+        // Si hay un color inicial, setup de rgbPicker y huePicker
+        if (me.value) {
+            me.setColor(me.value);
+        }
+    },
+    isTransparent: function() {
+        return this.down('#iTransparent').getValue();
+    },
+    setTransparent: function(flag) {
+        var me = this;
+
+        if (flag) {
+            me.down('#iRed').disable();
+            me.down('#iGreen').disable();
+            me.down('#iBlue').disable();
+            me.down('#iHue').disable();
+            me.down('#iSat').disable();
+            me.down('#iVal').disable();
+            me.down('#iHexa').disable();
+
+            me.down('#cWebsafe').el.hide();
+            me.down('#cInverse').el.hide();
+            me.down('#cSelect').el.hide();
+        } else {
+            me.down('#iRed').enable();
+            me.down('#iGreen').enable();
+            me.down('#iBlue').enable();
+            me.down('#iHue').enable();
+            me.down('#iSat').enable();
+            me.down('#iVal').enable();
+            me.down('#iHexa').enable();
+
+            me.down('#cWebsafe').el.show();
+            me.down('#cInverse').el.show();
+            me.down('#cSelect').el.show();
+        }
+    },
+    initEvents : function() {
+        var me = this;
+        me.callParent();
+
+        me.down('#cRgb').getEl().on('mousedown', function() {
+            if (!me.down('#iTransparent').getValue()) {
+                me.rgbClick.apply(me, arguments);
+            }
+        }, me);
+
+        me.down('#cHue').getEl().on('mousedown', function() {
+            if (!me.down('#iTransparent').getValue()) {
+                me.hueClick.apply(me, arguments);
+            }
+        }, me);
+
+        me.down('#iHexa').on('blur', me.hexaChange, me);
+
+        me.down('#iTransparent').on('change', function(self) {
+            me.setTransparent(self.getValue());
+        }, me);
+
+        me.down('#iRed').on('blur', me.rgbChange, me);
+        me.down('#iGreen').on('blur', me.rgbChange, me);
+        me.down('#iBlue').on('blur', me.rgbChange, me);
+
+        me.down('#iHue').on('blur', me.hsvChange, me);
+        me.down('#iSat').on('blur', me.hsvChange, me);
+        me.down('#iVal').on('blur', me.hsvChange, me);
+
+        me.down('#bWebsafe').on('click', function() {
+            if (!me.down('#iTransparent').getValue()) {
+                me.websafeClick.apply(me, arguments);
+            }
+        }, me);
+
+        me.down('#bInverse').on('click', function() {
+            if (!me.down('#iTransparent').getValue()) {
+                me.inverseClick.apply(me, arguments);
+            }
+        }, me);
+        me.down('#bSelect').on('click', me.selectClick, me);
+    },
+    websafeClick : function() {
+        var
+            me = this,
+            rgb = me.websafe(
+                me.getColor()
+            );
+
+        me.updateMode = 'click';
+
+        me.setColor(me.rgbToHex(rgb));
+    },
+    inverseClick : function() {
+        var me = this, rgb = me.invert(this.getColor());
+        me.updateMode = 'click';
+        me.setColor(me.rgbToHex(rgb));
+    },
+    selectClick : function() {
+        var
+            me = this,
+            color;
+
+
+        color = me.down('#cSelect').getEl().getColor('backgroundColor', '', '').toUpperCase();
+
+        if (me.isTransparent()) {
+            color = 'transparent';
+        }
+
+        this.fireEvent('select', this, color);
+    },
+    getColor : function() {
+        var me = this, hsv = me.getHsv();
+        return me.hsvToRgb(hsv.h, hsv.s, hsv.v);
+    },
+    setValue : function(v) {
+        this.value = v;
+
+        if (v == 'transparent') {
+            this.setTransparent(true);
+        } else {
+            this.setColor(v);
+        }
+    },
+    setColor : function(c) {
+        var me = this;
+        if (me.rendered) {
+
+            c = c.replace('#', '');
+
+            if (!/^[0-9a-fA-F]{6}$/.test(c))
+                return;
+
+            me.down('#iHexa').setValue(c);
+            me.hexaChange();
+
+            // Actualizar rgbPicker
+            me.updateRgbPicker(me.getHsv().h);
+
+        }
+    },
+    selectColor : function(event, element) {
+        this.fireEvent('select', this, Ext.get(element).getColor('backgroundColor', '', ''));
+    },
+
+    rgbChange : function(input) {
+        var me = this, temp = me.rgbToHsv(me.down('#iRed').getValue(), me.down('#iGreen').getValue(), me.down('#iBlue').getValue());
+
+        me.updateMode = 'rgb';
+        me.setHsv({
+            h : temp[0],
+            s : temp[1],
+            v : temp[2]
+        });
+        me.updateColor();
+    },
+
+    hsvChange : function(input) {
+        var me = this;
+        me.updateMode = 'hsv';
+        me.setHsv({
+            h : me.down('#iHue').getValue(),
+            s : me.down('#iSat').getValue() / 100,
+            v : me.down('#iVal').getValue() / 100
+        });
+        me.updateColor();
+    },
+
+    hexaChange : function(input) {
+        var
+            me = this,
+            temp = me.rgbToHsv(me.hexToRgb(me.down('#iHexa').getValue()));
+
+        me.updateMode = 'hexa';
+
+        me.setHsv({
+            h : temp[0],
+            s : temp[1],
+            v : temp[2]
+        });
+        me.updateColor();
+    },
+
+    hueClick : function(event, el) {
+        var me = this;
+        me.updateMode = 'click';
+        me.moveHuePicker(event.getXY()[1] - me.down('#cHue').getEl().getTop());
+    },
+
+    rgbClick : function(event, el) {
+        var me = this, cRgb = me.down('#cRgb').getEl();
+        me.updateMode = 'click';
+        me.moveRgbPicker(event.getXY()[0] - cRgb.getLeft(), event.getXY()[1] - cRgb.getTop());
+    },
+
+    moveHuePicker : function(y) {
+        var me = this, hsv = me.getHsv(), hp = me.down('#huePicker').getEl();
+        hsv.h = Math.round(360 / 181 * (181 - y));
+        hp.moveTo(hp.getLeft(), me.down('#cHue').getEl().getTop() + y - 7, true);
+        me.updateRgbPicker(hsv.h);
+        me.updateColor();
+    },
+
+    updateRgbPicker : function(newValue) {
+        var me = this;
+        me.updateMode = 'click';
+        me.down('#cRgb').getEl().applyStyles({
+            'backgroundColor' : '#' + me.rgbToHex(me.hsvToRgb(newValue, 1, 1))
+        });
+    },
+
+    moveRgbPicker : function(x, y) {
+        var me = this, hsv = me.getHsv(), cRgb = me.down('#cRgb').getEl();
+        hsv.s = me.getSaturation(x);
+        hsv.v = me.getVal(y);
+        me.down('#rgbPicker').getEl().moveTo(cRgb.getLeft() + x - 7, cRgb.getTop() + y - 7, true);
+        me.updateColor();
+    },
+
+    updateColor : function() {
+        var me = this, hsv = me.getHsv();
+        var rgb = me.hsvToRgb(hsv.h, hsv.s, hsv.v);
+        var invert = me.invert(rgb);
+        var websafe = me.websafe(rgb);
+        var wsInvert = me.invert(websafe);
+
+        if (me.updateMode != 'hexa') {
+            me.down('#iHexa').setValue(me.rgbToHex(rgb));
+        }
+        if (me.updateMode != 'rgb') {
+            me.down('#iRed').setValue(rgb[0]);
+            me.down('#iGreen').setValue(rgb[1]);
+            me.down('#iBlue').setValue(rgb[2]);
+        }
+        if (me.updateMode != 'hsv') {
+            me.down('#iHue').setValue(Math.round(hsv.h));
+            me.down('#iSat').setValue(Math.round(hsv.s * 100));
+            me.down('#iVal').setValue(Math.round(hsv.v * 100));
+        }
+
+        me.setButtonColor('#cWebsafe', websafe);
+        me.setButtonColor('#cInverse', invert);
+        me.setButtonColor('#cSelect', rgb);
+
+        if (me.updateMode != 'click') {
+            var cRgb = me.down('#cRgb').getEl(), cHue = me.down('#cHue').getEl(), hp = me.down('#huePicker').getEl();
+            hp.moveTo(hp.getLeft(), cHue.getTop() + me.getHPos(me.down('#iHue').getValue()) - 7, true);
+            me.down('#rgbPicker').getEl().moveTo(cRgb.getLeft() + me.getSPos(me.down('#iSat').getValue() / 100) - 7,
+                cHue.getTop() + me.getVPos(me.down('#iVal').getValue() / 100) - 7, true);
+        }
+    },
+
+    setButtonColor : function(id, rgb) {
+        var me = this, dq = Ext.DomQuery, invert = me.invert(rgb);
+        me.down(id).getEl().applyStyles({
+            'background' : '#' + me.rgbToHex(rgb)
+        });
+    },
+    /**
+     * Convert X coordinate to Saturation value
+     *
+     * @private
+     * @param {Number} x
+     * @return {Number}
+     */
+    getSaturation : function(x) {
+        return x / 181;
+    },
+
+    /**
+     * Convert Y coordinate to Brightness value
+     *
+     * @private
+     * @param {Number} y
+     * @return {Number}
+     */
+    getVal : function(y) {
+        return (181 - y) / 181;
+    },
+    hsvToRgb : function(h, s, v) {
+        if (h instanceof Array) {
+            return this.hsvToRgb.call(this, h[0], h[1], h[2]);
+        }
+
+        var r, g, b, i, f, p, q, t;
+
+        i = Math.floor((h / 60) % 6);
+        f = (h / 60) - i;
+        p = v * (1 - s);
+        q = v * (1 - f * s);
+        t = v * (1 - (1 - f) * s);
+        switch (i) {
+            case 0:
+                r = v,g = t,b = p;
+                break;
+            case 1:
+                r = q,g = v,b = p;
+                break;
+            case 2:
+                r = p,g = v,b = t;
+                break;
+            case 3:
+                r = p,g = q,b = v;
+                break;
+            case 4:
+                r = t,g = p,b = v;
+                break;
+            case 5:
+                r = v,g = p,b = q;
+                break;
+        }
+        return [ this.realToDec(r), this.realToDec(g), this.realToDec(b) ];
+    },
+    /**
+     * Convert a float to decimal
+     *
+     * @param {Number} n
+     * @return {Number}
+     */
+    realToDec : function(n) {
+        return Math.min(255, Math.round(n * 256));
+    },
+
+    websafe : function(r, g, b) {
+        var me = this;
+        if (r instanceof Array) {
+            return me.websafe.call(me, r[0], r[1], r[2]);
+        }
+        return [ me.checkSafeNumber(r), me.checkSafeNumber(g), me.checkSafeNumber(b) ];
+    },
+
+    checkSafeNumber : function(v) {
+        if (!isNaN(v)) {
+            v = Math.min(Math.max(0, v), 255);
+            var i, next;
+            for (i = 0; i < 256; i = i + 51) {
+                next = i + 51;
+                if (v >= i && v <= next) {
+                    return (v - i > 25) ? next : i;
+                }
+            }
+        }
+        return v;
+    },
+
+    invert : function(r, g, b) {
+        if (r instanceof Array) {
+            return this.invert.call(this, r[0], r[1], r[2]);
+        }
+        return [ 255 - r, 255 - g, 255 - b ];
+    },
+
+    getSPos : function(saturation) {
+        return saturation * 181;
+    },
+
+    getVPos : function(value) {
+        return 181 - (value * 181);
+    },
+
+    getHPos : function(hue) {
+        return 181 - hue * (181 / 360);
+    },
+
+    hexToRgb : function(hex) {
+        var r, g, b;
+        r = parseInt(hex.substring(0, 2), 16);
+        g = parseInt(hex.substring(2, 4), 16);
+        b = parseInt(hex.substring(4, 6), 16);
+
+        return [ r, g, b ];
+    },
+
+    rgbToHex : function(r, g, b) {
+        var me = this;
+        if (r instanceof Array)
+            return me.rgbToHex.call(me, r[0], r[1], r[2]);
+
+        return me.toHex(r) + me.toHex(g) + me.toHex(b);
+    },
+
+    toHex : function(n) {
+        n = parseInt(n, 10);
+        if (isNaN(n))
+            return "00";
+        n = Math.max(0, Math.min(n, 255));
+        return "0123456789ABCDEF".charAt((n - n % 16) / 16) + "0123456789ABCDEF".charAt(n % 16);
+    },
+
+    rgbToHsv : function(r, g, b) {
+        if (r instanceof Array)
+            return this.rgbToHsv.call(this, r[0], r[1], r[2]);
+
+        r = r / 255,g = g / 255,b = b / 255;
+        var max = Math.max(r, g, b), min = Math.min(r, g, b);
+        var h, s, v = max;
+
+        var d = max - min;
+        s = max == 0 ? 0 : d / max;
+
+        if (max == min) {
+            h = 0; // achromatic
+        } else {
+            switch (max) {
+                case r:
+                    h = (g - b) / d + (g < b ? 6 : 0);
+                    break;
+                case g:
+                    h = (b - r) / d + 2;
+                    break;
+                case b:
+                    h = (r - g) / d + 4;
+                    break;
+            }
+            h /= 6;
+        }
+
+        return [ h * 360, s, v ];
+    }
+});
+Ext.define('Ext.ux.colorpicker.ColorPickerField', {
+    extend : 'Ext.form.field.Picker',
+    matchFieldWidth : false,
+
+
+    createPicker : function() {
+        var me = this;
+
+        return Ext.create('Ext.ux.colorpicker.ColorPicker', {
+            floating : true,
+            baseCls : Ext.baseCSSPrefix + 'colorpicker',
+            listeners : {
+                scope : me,
+                select : me.onSelect
+            }
+        });
+    },
+    onSelect : function(picker, value) {
+        var
+            me = this,
+            hex = value != 'transparent' ? '#' + value : value;
+
+        me.setValue(hex);
+        me.fireEvent('select', me, hex);
+        me.collapse();
+        me.blur();
+
+        Ext.Element.get(this.el.query('input')[0]).setStyle('backgroundColor', hex);
+        Ext.Element.get(this.el.query('input')[0]).setStyle('backgroundImage', 'none');
+    },
+
+    onExpand : function(picker) {
+        this.picker.setValue(
+            this.getValue()
+        );
+    }
+});
+/**
+ * TODO comentar
+ *
+ * @author Valentin Starck
+ */
+Ext.define('Ext.ux.cufonpicker.CufonPickerField', {
+    extend : 'Ext.form.field.Picker',
+    matchFieldWidth : false,
+    cls: 'webbie-ux-cufon-picker-field',
+    alias: 'cufonfield',
+
+    constructor : function(config) {
+        this.initConfig(config);
+        this.addEvents('change');
+        this.callParent(arguments);
+    },
+    createPicker : function() {
+        var picker = Ext.create('webbie.ux.cufonpicker.CufonPickerPanel', {
+            hideTopBar: this.hideTopBar || false,
+            listeners : {
+                scope : this,
+                select : this.onSelect
+            }
+        });
+
+        picker.setPreviewText(
+            this.getPreviewText()
+        );
+
+        return picker;
+    },
+
+    getPreviewText: function(text) {
+        this.previewText = text;
+    },
+
+    setPreviewText: function() {
+        return this.previewText;
+    },
+    onSelect : function(picker, value) {
+        this.setValue(value);
+        this.fireEvent('select', this, value);
+        this.fireEvent('change', this, value);
+        this.collapse();
+        this.blur();
+    }
+});
+Ext.define('Ext.ux.cufonpicker.CufonPickerPanel', {
+    itemId: 'cufonPicker',
+    extend : 'Ext.panel.Panel',
+    layout: 'fit',
+    width : 550,
+    height: 300,
+    floating: true,
+    baseCls : Ext.baseCSSPrefix + 'cufonpicker',
+    autoScroll: true,
+    previewText: 'Lorem ipsum 123',
+    constructor : function(config) {
+        this.initConfig(config);
+        this.addEvents('select');
+        this.callParent(arguments);
+    },
+    setPreviewText: function(text) {
+        this.previewText = text;
+    },
+    onMouseWheel: function(e) {
+        e.stopEvent();
+        e.stopPropagation();
+    },
+    getPreviewText: function() {
+        return this.previewText;
+    },
+    items: [
+        {
+            xtype: 'panel',
+            autoScroll: true,
+            onMouseWheel: function(e) {
+                e.stopEvent();
+                e.stopPropagation();
+            },
+            listeners: {
+                afterrender: function(self) {
+                    var picker = self.up('#cufonPicker');
+
+                    self.el.addListener('click', function(ev, el, opts) {
+                        el = Ext.Element.get(el);
+
+                        if (!el.is('.webbie-preview')) {
+                            el = el.up('.webbie-preview');
+                            if (!el) {
+                                return;
+                            }
+                        }
+
+                        el = el.parent().parent();
+
+                        self.up('#cufonPicker').setValue(
+                            Ext.getCmp(el.id)._font
+                        );
+                    });
+                }
+            }
+        }
+    ],
+    /**
+     * Actualiza el panel para mostrar
+     * todas las variantes cargadas
+     *
+     * @return {webbie.ux.cufonpicker.CufonPickerPanel}
+     */
+    refresh: function(removeAll) {
+        try {
+            var
+                self = this,
+                fontCt = this.items.get(0);
+
+            if (removeAll) {
+                fontCt.removeAll();
+            }
+        } catch(e) {
+            return this;
+        }
+
+        var variants = [];
+
+        Ext.iterate(webbie.getCufonWebbie().getRegisteredFonts(), function(key, value, index) {
+            // console.log(arguments);
+            variants.push(value.get().face['font-family']);
+        });
+
+
+        // En cada pasada agregamos fonts
+        variants.forEach(function(variant, i) {
+            var cls = variant.toLowerCase().replace(/[^a-z\d]+/g, '_');
+
+            // Evitamos repetir fonts
+            if (self.down('#' + cls)) {
+                return;
+            }
+
+            // El estilo diferenciado es para separar las fonts utilizadas
+            // de las demas
+            var style = '';
+
+            if (webbie.getCufonWebbie().originalLength && i + 1 == webbie.getCufonWebbie().originalLength) {
+                style = 'border-bottom: dotted 2px #777;html 5 '
+            }
+
+            fontCt.add({
+                _font: variant,
+                cls: cls,
+                border: false,
+                itemId: cls,
+                html: '<div class="webbie-title">' + variant +
+                    '</div><div class="webbie-preview ' + app.hash(variant) + '">' +
+                    (self.getPreviewText() || '<div style="font-size: 20px; margin-bottom: 10px">Lorem ipsum 123</div>') +
+                    '</div>',
+                margin: '6 0',
+                style: style,
+                listeners: {
+                    afterrender: function(fontCtChild) {
+                        webbie.getCufonWebbie().replace(
+                            '.' + app.hash(variant), {
+                                fontFamily: variant,
+                                hover: true
+                            }
+                        );
+                    }
+                }
+            });
+
+        });
+        return this;
+    },
+    cufonContainer: 'div.webbie-preview',
+    listeners: {
+        activate: function(self) {
+            self.refresh(true);
+        }
+    },
+    setValue : function(v) {
+        this.value = v;
+        this.fireEvent('select', this, v);
+    }
+});
+/**
+ * TODO comentar
+ *
+ * @author Valentin Starck
+ */
+Ext.define('Ext.ux.imagepicker.ImagePickerField', {
+    extend : 'Ext.form.field.Picker',
+    matchFieldWidth : false,
+    cls: 'ext-ux-image-picker-field',
+    imageWidth: 100,
+    imageHeight: 100,
+    createPicker : function() {
+        var picker = Ext.create('Ext.ux.imagepicker.ImagePickerPanel', {
+            images: this.images || [],
+            imageWidth: this.imageWidth,
+            imageHeight: this.imageHeight,
+            imagePadding: this.imagePadding,
+            width: 475,
+            listeners : {
+                scope : this,
+                select : this.onSelect
+            }
+        });
+        return picker;
+    },
+    onSelect : function(picker, value) {
+        this.setValue(value);
+        this.fireEvent('select', this, value);
+        this.collapse();
+        this.blur();
+    },
+    refresh: function() {
+        this.picker = this.createPicker();
+    }
+});
+Ext.define('Ext.ux.imagepicker.ImagePickerPanel', {
+    itemId: 'image-picker',
+    extend : 'Ext.panel.Panel',
+    width : 550,
+    height: 300,
+    images: [],
+    imageWidth: 100,
+    imageHeight: 100,
+    floating: true,
+    baseCls : Ext.baseCSSPrefix + 'imagepicker',
+    autoScroll: true,
+    onMouseWheel: function(e) {
+        e.stopEvent();
+        e.stopPropagation();
+    },
+    layout: 'fit',
+    items: [
+        {
+            xtype: 'panel',
+            autoScroll: true,
+            onMouseWheel: function(e) {
+                e.stopEvent();
+                e.stopPropagation();
+            },
+            listeners: {
+                afterrender: function(self) {
+                    var
+                        picker = self.up('#image-picker'),
+                        images = picker.images || [],
+                        IMAGE_TEMPLATE = ('<div data-src="{src}" style="cursor: pointer;overflow: hidden; text-align: center; margin: {margin}px;padding: {padding}px; border: solid 1px #999; float: left; height: {divHeight}px; width: {divWidth}px"><image src="{src}" width="{width}"></image></div>').tpl({
+                            width: picker.imageWidth,
+                            height: picker.imageHeight,
+                            divWidth: picker.imageHeight * 2,
+                            divHeight: picker.imageHeight * 2,
+                            padding: 5,
+                            margin: 5
+                        }),
+                        html = '',
+                        d = +new Date;
+
+
+                    images.forEach(function(e) {
+                        html += IMAGE_TEMPLATE.tpl({
+                            src: e + '?' + d
+                        });
+                    });
+
+                    self.add({
+                        xtype: 'panel',
+                        html: html
+                    });
+                }
+            }
+        }
+    ],
+    constructor : function(config) {
+        this.initConfig(config);
+        this.addEvents('select');
+        this.callParent(arguments);
+    },
+    listeners: {
+        activate: function(self) {
+        },
+        afterrender: function(self) {
+            self.items.get(0).el.addListener('click', function(ev, el, opts) {
+                el = Ext.Element.get(el);
+
+                self.setValue(el.getAttribute('data-src') || el.getAttribute('src'));
+            });
+        }
+    },
+    setValue : function(v) {
+        this.value = v;
+        this.fireEvent('select', this, v);
+    }
+});
 function iwage() {
     var args = arguments;
 
@@ -597,7 +1580,7 @@ iwage.file = {
     createCanvas: function() {
         return $('<canvas/>').get(0);
     },
-    // TODO mover a iwage(iwage.MODES.IMAGE)
+    // TODO move to iwage(iwage.MODES.IMAGE)
     rescale: function(dataUri, scale) {
         var canvas, image, context;
 
