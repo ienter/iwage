@@ -73,7 +73,7 @@ Graphic Editing Features:
 * Canvas
 * File Api
 
-### Libraries:
+### Technologies:
 * fabric.js
 * glfx.js
 * ExtJs
