@@ -1,6 +1,6 @@
 IWAGE
 =====
-<img scr="IWAGE/raw/master/screenshot.png" alt="IWAGE Editor Screenshot" width="800" />.
+<img scr="raw/master/screenshot.png" alt="IWAGE Editor Screenshot" width="800" />.
 
 A HTML5 Image and Graphic Editor.
 
