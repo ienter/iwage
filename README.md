@@ -1,6 +1,6 @@
 Iwage
 =====
-<img src="IWAGE/raw/master/screenshot.png" alt="IWAGE Editor Screenshot" width="800" style="display: block; margin-left: auto; margin-right: auto;"/>
+<img src="IWAGE/raw/master/screenshot.png" alt="iwage Editor Screenshot" width="800" style="display: block; margin-left: auto; margin-right: auto;"/>
 
 A HTML5 Image and Graphic Editor.
 
