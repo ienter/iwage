@@ -67,13 +67,11 @@ Graphic Editing Features:
 * Triangle
 * Circle
 
-### Technologies:
+### Technologies & Libraries:
 
 * WebGL
 * Canvas
 * File Api
-
-### Technologies:
 * fabric.js
 * glfx.js
 * ExtJs
