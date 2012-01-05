@@ -28,7 +28,7 @@ iwage.view.menu.create = function() {
     menu.items = menu.items.concat([
         '->',
         {
-            text: 'Editor de graficos',
+            text: iwage.label('Editor de graficos'),
             icon: iwage.icon('palette'),
             disabled: iwage.getMode() == iwage.MODES.FABRIC,
             handler: function() {
@@ -38,7 +38,7 @@ iwage.view.menu.create = function() {
         },
         '-',
         {
-            text: 'Editor de imagenes',
+            text: iwage.label('Editor de imagenes'),
             icon: iwage.icon('photo'),
             disabled: iwage.getMode() == iwage.MODES.IMAGE,
             handler: function() {

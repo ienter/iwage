@@ -20,6 +20,10 @@ iwage.view = {
     }
 };
 
+iwage.lang = iwage.view.lang = function(lang, labels) {
+    iwage
+};
+
 iwage.view.adjustContainer = function (delay) {
     setTimeout(function () {
         $('#container')
@@ -99,7 +103,7 @@ iwage.view.start = function () {
                 region:'east',
                 width:285,
                 componentCls:'east-tool',
-                title:'Herramientas',
+                title: iwage.label('tools'),
                 collapsible:true,
                 collapsed:false,
                 items:iwage.tools.getStatic(),
@@ -224,7 +228,7 @@ iwage.icons = iwage.view.icons = {
 };
 
 iwage.icon = iwage.view.icon = function (icon) {
-    var basePath =  '../src/images/icons/';
+    var basePath =  '/src/images/icons/';
 
     icon = iwage.icons[icon.toUpperCase()];
 

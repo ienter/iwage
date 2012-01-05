@@ -29,6 +29,7 @@ files_names = [
             'iwage.view.js',
             'iwage.keybinding.js',
             'iwage.transition.js',
+            'iwage.i18n.js',
 
             'view/menu.js',
             'view/statusbar.js',
