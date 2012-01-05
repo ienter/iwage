@@ -21,15 +21,16 @@ files_names = [
     [
         '../src/js/',
         [
+            # Base
             'iwage.js',
-            'iwage.modes.js',
-            'iwage.tools.js',
-            'iwage.history.js',
-            'iwage.file.js',
-            'iwage.view.js',
-            'iwage.keybinding.js',
-            'iwage.transition.js',
-            'iwage.i18n.js',
+            'modes.js',
+            'tools.js',
+            'history.js',
+            'file.js',
+            'view.js',
+            'keybinding.js',
+            'transition.js',
+            'i18n.js',
 
             'view/menu.js',
             'view/statusbar.js',
@@ -116,18 +117,21 @@ files_names = [
 
 digested = ''
 
+count = 0
+error = 0
 files_names.each do |data|
     path = data[0]
     data[1].each do |filename|
         filepath = "#{path}#{filename}"
+        count += 1
 
         if File::exists? filepath
             content = IO.read filepath
 
             digested += content.strip
             digested += "\n"
-            puts "Added #{filepath}"
         else
+            error += 1
             puts "File not found #{filepath}"
         end
     end
@@ -135,4 +139,8 @@ end
 
 filename = '../dist/iwage.all.js'
 File.open(filename, "w") { |file| file.write(digested.strip) }
+
+added = count - error
+
+puts "Added #{added}/#{count} files"
 puts "Created #{filename}"
