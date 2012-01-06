@@ -21,20 +21,6 @@ iwage(iwage.MODES.FABRIC).view.menu = {
                         handler: function() {
                             iwage(iwage.MODES.FABRIC).preview();
                         }
-                    },
-                    {
-                        text: 'Instalar',
-                        icon: iwage.icon('tick'),
-                        handler: function() {
-                            iwage(iwage.MODES.FABRIC).install();
-                        }
-                    },
-                    {
-                        text: 'Descargar',
-                        icon: iwage.icon('download'),
-                        handler: function() {
-                            iwage.file.viewAsImage();
-                        }
                     }
                 ]
             }

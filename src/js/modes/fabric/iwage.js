@@ -699,13 +699,11 @@ topo.utils.configurize(topo.Editor.prototype);
      * @param {Object} options
      */
     fabricMode.start = function(options) {
-        fabricMode.loadFonts();
-
         setTimeout(function() {
             fabricMode.initTopo(options);
             fabricMode.start = function() {
             };
-        });
+        }, 0);
 
     };
 
@@ -754,53 +752,6 @@ topo.utils.configurize(topo.Editor.prototype);
         while (obj = canvas.item(0)) {
             canvas.remove(obj);
         }
-    };
-
-    fabricMode.loadFonts = function() {
-        fabricMode.findFonts(function(data) {
-            var
-                base = '/asset/font/file/',
-                toRequest = data.length,
-                requested = 0;
-
-            function ready() {
-                requested++;
-
-                iwage.view.statusbar.setMessage(
-                    'Cagando fuentes ' + Math.floor(requested / toRequest * 100) + '%'
-                );
-
-                if (toRequest == requested) {
-                    iwage.view.statusbar.hide();
-                }
-            }
-
-            Ext.each(data, function(current, index, total) {
-                Ext.Loader.loadScriptFile(
-                    base + current.file,
-                    ready,
-                    ready
-                );
-            });
-        });
-    };
-
-    fabricMode.findFonts = function(callback) {
-        Ext.Ajax.request({
-            url: '/system/finder/findInModel/fontset/all/',
-            success: function(response) {
-                var data;
-
-                try {
-                    data = Ext.decode(response.responseText);
-                } catch(e) {
-                }
-
-                if (data) {
-                    callback(data.data);
-                }
-            }
-        });
     };
 
     fabricMode.initEvents = function() {
@@ -919,20 +870,6 @@ topo.utils.configurize(topo.Editor.prototype);
                 'src', fabricMode.topo.toDataURI()
             );
             w.focus();
-        });
-    };
-
-    fabricMode.install = function() {
-        var uri = fabricMode.topo.toDataURI();
-
-        Ext.Ajax.request({
-            url:'/webbie_image/install_logo/',
-            params: {
-                uri: uri
-            },
-            success: function(response) {
-                iwage.alert('Logo instalado!');
-            }
         });
     };
 })(iwage.mode(iwage.MODES.FABRIC));
