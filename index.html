@@ -1,88 +1,155 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset='utf-8'>
+<meta charset='utf-8'>
 
-  <title>ienter/iwage @ GitHub</title>
+<title>ienter/iwage @ GitHub</title>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #b70873;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #48f78c; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #48f78c; }
-    h3 { text-align: center; color: #48f78c; }
-    a { color: #48f78c; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+<style type="text/css">
+body {
+	margin-top: 1.0em;
+	
+	/* fallback */
+	background-color: #F2F2F2;
+	
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#8A8A8A));
+	
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #FFFFFF, #8A8A8A);
+	
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, #FFFFFF, #8A8A8A);
+	
+	/* IE 10 */
+	background: -ms-linear-gradient(top, #FFFFFF, #8A8A8A);
+	
+	/* Opera 11.10+ */
+	background: -o-linear-gradient(top, #FFFFFF, #8A8A8A);
+	
+	font-family: Helvetica, Arial, FreeSans, san-serif;
+	color: #000000;
+}
+
+#container {
+	margin: 0 auto;
+	width: 800px;
+}
+h1 { font-size: 4.2em; color: #000; margin-bottom: 3px; 
+	background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#333));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+h1 .small { font-size: 0.4em; }
+h1 a { text-decoration: none }
+h2 { font-size: 1.5em; color: #000; }
+h3 { text-align: center; color: #000; }
+a { color: #000033; }
+.description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+.screenshot {width:800px;}
+.screenshot img {width:800px;}
+.download { float: right; }
+pre { background: #000; color: #fff; padding: 15px;}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.footer { text-align:center; padding-top:30px; font-style: italic; }
+
+.starburst {
+    	float: right;
+	display:block;
+	width:6em;
+	height:6em;
+	background:#3B4990;
+	-webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	rotation:-45deg;
+	position:relative;
+	top:2em;
+	left:2em;
+	text-align:center;
+	text-decoration:none;
+	color:#FFF;
+	font-weight:bold;
+	font-family:Arial, sans-serif;
+	-webkit-box-shadow: 3px 3px 4px #999;
+	box-shadow: 3px 3px 4px #999;
+}
+.starburst span {
+	display:block;
+	width:6em;
+	height:6em;
+	background:#3B4990;
+	-webkit-transform:rotate(22.5deg);
+	-moz-transform:rotate(22.5deg);
+	rotation:22.5deg;
+}
+
+
+
+</style>
 </head>
 
 <body>
-  <a href="https://github.com/ienter/iwage"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<a href="https://github.com/ienter/iwage"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
-  <div id="container">
+<div id="container">
 
-    <div class="download">
-      <a href="https://github.com/ienter/iwage/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/ienter/iwage/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+<div class="download">
+<a href="https://github.com/ienter/iwage/zipball/master">
+<img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
+<a href="https://github.com/ienter/iwage/tarball/master">
+<img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+<a href="#" class="starburst">
+<span><span><span>
+<br />TRY<br />IT<br />NOW!
+</span></span></span>
+</a>
+</div>
 
-    <h1><a href="https://github.com/ienter/iwage">iwage</a>
-      <span class="small">by <a href="https://github.com/ienter">ienter</a></span></h1>
 
-    <div class="description">
-      A HTML5 Image and Graphic Editor
-    </div>
+<h1><a href="https://github.com/ienter/iwage">iwage</a>
+<span class="small">by <a href="https://github.com/ienter">ienter</a></span></h1>
 
-    
+<div class="description">
+A HTML5 Image and Graphic Editor.
+</div>
 
-    
+<div class="screenshot">
+<img src="http://github.com/adrianpineyro/iwage/raw/master/screenshot.png">
+</div>
 
-    
 
-    
+<h2>Author</h2>
+<p>IEnter</p>
 
-    
-      <h2>Authors</h2>
-      <p>Adrián E. Piñeyro (adrian_ep@msn.com)<br/>Valentin Starck (valentin.starck@gmail.com)<br/>      </p>
-    
 
-    
-      <h2>Contact</h2>
-      <p>Ienter (info@ienter.net)<br/>      </p>
-    
+<h2>Copyright</h2>
+<p>Copyright (c) 2011 IEnter S.A.</p>
 
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/ienter/iwage/zipball/master">zip</a> or
-      <a href="https://github.com/ienter/iwage/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/ienter/iwage</pre>
-    </p>
+<h2>License</h2>
+<p>MIT License</p>
 
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/ienter/iwage">ienter/iwage</a>
-    </div>
+<h2>WebSite</h2>
+<p><a href="http://www.ienter.net">http://www.ienter.net</a></p>
 
-  </div>
+<h2>Team</h2>
+<p><a href="https://github.com/Aijoona">Valentin Starck (Developer)</a>, <a href="https://github.com/adrianpineyro">Adrián E. Piñeyro (Product/Project Manager)</a></p>
+
+<h2>Download</h2>
+<p>
+You can download this project in either
+<a href="https://github.com/ienter/iwage/zipball/master">zip</a> or
+<a href="https://github.com/ienter/iwage/tarball/master">tar formats.
+</p>
+<p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+by running:
+<pre>$ git clone git://github.com/ienter/iwage</pre>
+</p>
+
+<div class="footer">
+get the source code on GitHub : <a href="https://github.com/ienter/iwage">ienter/iwage</a>
+</div>
+
+</div>
 
 </body>
 </html>
