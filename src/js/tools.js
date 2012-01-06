@@ -92,7 +92,6 @@ iwage.tools.setMode = function (mode) {
     var actives = iwage.tools.active;
     for (var i = 0, l = actives.length; i < l; i++) {
         if (!actives[i].mode) {
-            // Toda tool deberia tener un modo
             iwage.warn('Modeless tool: ' + actives[i].$className);
             continue;
         }

@@ -79,6 +79,11 @@ iwage.view.error = function (e) {
     });
 };
 
+
+iwage.alert = function (msg) {
+    Ext.MessageBox.alert('Aviso', msg);
+};
+
 iwage.view.start = function () {
     Ext.QuickTips.init();
 
