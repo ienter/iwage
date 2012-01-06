@@ -6,7 +6,7 @@
 Ext.define('Ext.ux.cufonpicker.CufonPickerField', {
     extend : 'Ext.form.field.Picker',
     matchFieldWidth : false,
-    cls: 'webbie-ux-cufon-picker-field',
+    cls: 'ext-ux-cufon-picker-field',
     alias: 'cufonfield',
 
     constructor : function(config) {
@@ -15,7 +15,7 @@ Ext.define('Ext.ux.cufonpicker.CufonPickerField', {
         this.callParent(arguments);
     },
     createPicker : function() {
-        var picker = Ext.create('webbie.ux.cufonpicker.CufonPickerPanel', {
+        var picker = Ext.create('Ext.ux.cufonpicker.CufonPickerPanel', {
             hideTopBar: this.hideTopBar || false,
             listeners : {
                 scope : this,

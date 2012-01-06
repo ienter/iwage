@@ -21,7 +21,7 @@ Ext.define('iwage.fabric.tools.Text', {
                 fieldLabel: 'Texto',
                 emptyText: 'Escriba aqui'
             },
-            Ext.create('webbie.ux.cufonpicker.CufonPickerField', {
+            Ext.create('Ext.ux.cufonpicker.CufonPickerField', {
                 hideTopBar: true,
                 itemId: 'fontFamily',
                 fieldLabel: 'Tipografia',

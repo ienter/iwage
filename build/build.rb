@@ -13,6 +13,7 @@ files_names = [
             'Ext.ux.colorpicker.ColorPicker.js',
             'Ext.ux.colorpicker.ColorPickerField.js',
             'Ext.ux.cufonpicker.CufonPickerField.js',
+            'Ext.ux.cufonpicker.CufonPickerPanel.js',
             'Ext.ux.imagepicker.ImagePickerField.js',
             'Ext.ux.imagepicker.ImagePickerPanel.js'
         ]
