@@ -24,6 +24,7 @@ files_names = [
             # Base
             'iwage.js',
             'modes.js',
+            'event.js',
             'tools.js',
             'history.js',
             'file.js',
@@ -42,7 +43,6 @@ files_names = [
             'tools/Open.js',
 
             'modes/fabric/vendor/fabric.all.js',
-            'modes/fabric/iwage.js',
 
             'modes/fabric/iwage.js',
             'modes/fabric/file.js',
