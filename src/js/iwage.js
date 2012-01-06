@@ -11,48 +11,46 @@ function iwage() {
         }
 
         return {
-            tpl: function(o) {
+            tpl:function (o) {
                 return iwage.tpl(args[0], o);
             }
         };
     }
 }
 
-iwage.getMode = function() {
+iwage.getMode = function () {
     return iwage._mode;
 };
 
-iwage.tpl = function(str, obj) {
+iwage.tpl = function (str, obj) {
     for (var prop in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, prop)) {
             str = str.replace((new RegExp('\\{' + prop.toString() + '\\}', 'g')), obj[prop] || '');
         }
     }
 
-    str.replace(/\{.+\}/, '');
-
     return str;
 };
 
 iwage._values = {};
 
-iwage.set = function(key, value) {
+iwage.set = function (key, value) {
     return (iwage._values[key] = value);
 };
-iwage.get = function(key) {
+iwage.get = function (key) {
     return iwage._values[key];
 };
 
-iwage.unset = function(key) {
+iwage.unset = function (key) {
     return delete iwage._values[key];
 };
 
 /**
- * Crea el namespace para todos los modos registrados
+ * Creates the namespace for all registered modes
  *
  * @param {String} namespace
  */
-iwage.ns = function(namespace) {
+iwage.ns = function (namespace) {
     namespace in iwage || (iwage[namespace] = {});
 
     for (var p in iwage.MODES) {
@@ -62,16 +60,14 @@ iwage.ns = function(namespace) {
     }
 };
 
-iwage.uid = (function() {
+iwage.uid = (function () {
     var map = {};
-    return function(prefix) {
+    return function (prefix) {
         prefix = prefix || 'generated';
         map[prefix] = map[prefix] || 0;
 
         var id = prefix + '-' + map[prefix]++;
 
-        // Valida que no exista un elemento con
-        // el mismo id
         if (document.getElementById(id)) {
             return createId(prefix);
         }
@@ -79,13 +75,13 @@ iwage.uid = (function() {
     }
 })();
 
-iwage.path = function(path, root) {
+iwage.path = function (path, root) {
     var parts, i, l;
 
     parts = path.split('.');
     root = root || iwage();
 
-    for (i = 0,l = parts.length; i < l; i++) {
+    for (i = 0, l = parts.length; i < l; i++) {
         if (!root[parts[i]]) {
             return null;
         }
@@ -95,7 +91,7 @@ iwage.path = function(path, root) {
     return root;
 }
 
-iwage.exec = function(method, args) {
+iwage.exec = function (method, args) {
     var ref, context;
 
     ref = iwage.path(method);
@@ -110,24 +106,19 @@ iwage.exec = function(method, args) {
     return ref.apply(context, args);
 };
 
-
-iwage.alert = function(msg) {
-    Ext.MessageBox.alert('Aviso', msg);
-};
-
 Ext.ns('iwage.tools');
 Ext.ns('iwage.util');
 Ext.ns('iwage.fabric');
 
-iwage.log = function() {
+iwage.log = function () {
     console && console.log.apply(console, arguments);
 };
 
-iwage.warn = function() {
+iwage.warn = function () {
     console && console.warn.apply(console, arguments);
 };
 
-iwage.error = function() {
+iwage.error = function () {
     iwage.log('Error ===================================================');
     console && console.error.apply(console, arguments);
     iwage.log('=========================================================');
@@ -140,15 +131,15 @@ iwage.error = function() {
  *
  * @param {Object} options
  */
-iwage.start = function(options) {
+iwage.start = function (options) {
     options = Ext.apply({
-        mode: iwage.MODES.IMAGE,
-        modes: {
-            IMAGE: true,
-            FABRIC: true
+        mode:iwage.MODES.IMAGE,
+        modes:{
+            IMAGE:true,
+            FABRIC:true
         },
-        fabricWidth: 300,
-        fabricHeight: 300
+        fabricWidth:300,
+        fabricHeight:300
     }, options || {});
 
     if (options['fabric.size']) {
@@ -170,7 +161,7 @@ iwage.start = function(options) {
     }
 };
 
-iwage.mode = function(mode) {
+iwage.mode = function (mode) {
     if (!mode) {
         mode = iwage.getMode().toLowerCase();
     }
@@ -182,13 +173,13 @@ iwage.mode = function(mode) {
     return iwage[mode];
 };
 
-iwage.eachMode = function(fn) {
-    Ext.iterate(iwage.MODES, function(mode) {
+iwage.eachMode = function (fn) {
+    Ext.iterate(iwage.MODES, function (mode) {
         fn(iwage(mode));
     });
 };
 
-iwage.setMode = function(mode) {
+iwage.setMode = function (mode) {
     iwage._mode = mode;
     iwage.emit('app:mode', mode);
     iwage.tools.clear();
@@ -196,76 +187,14 @@ iwage.setMode = function(mode) {
     iwage.tools.setMode(mode);
 };
 
-iwage.ev = {
-    _handlers: {},
-    on: function(ev, handler, scope) {
-        if (Ext.isArray(ev)) {
-            Ext.each(ev, function(current) {
-                iwage.ev.on(current, handler, scope);
-            });
-            return;
-        }
-
-        this._handlers[ev] = this._handlers[ev] || [];
-
-        this._handlers[ev].push(handler);
-        handler.scope = scope;
-    },
-    /**
-     * Event handler de unico uso
-     *
-     * @param ev
-     * @param handler
-     */
-    one: function(ev, handler, scope) {
-        ev.$single = true;
-
-        this.on(ev, handler, scope);
-    },
-    off: function(ev, handler) {
-        if (!this._handlers[ev]) {
-            return;
-        }
-    },
-    emit: function(ev) {
-        if (!this._handlers[ev]) {
-            return;
-        }
-
-        var
-            args = Array.prototype.slice.call(arguments, 1),
-            handlers = [];
-
-        this._handlers[ev].forEach(function(handler) {
-            handler.apply(handler.scope, args);
-
-            if (!handler.$single) {
-                handlers.push(handler);
-            }
-        });
-    }
-};
-
-iwage.on = function() {
-    iwage.ev.on.apply(iwage.ev, arguments);
-};
-
-iwage.off = function() {
-    iwage.ev.off.apply(iwage.ev, arguments);
-};
-
-iwage.emit = function() {
-    iwage.ev.emit.apply(iwage.ev, arguments);
-};
-
-iwage.cancel = function() {
+iwage.cancel = function () {
     iwage.emit('app:cancel');
 };
 
-iwage.util.listenersForMode = function(onFabricMode, onImageMode) {
+iwage.util.listenersForMode = function (onFabricMode, onImageMode) {
     return {
-        afterrender: function(self) {
-            iwage.on('app:mode', function(mode) {
+        afterrender:function (self) {
+            iwage.on('app:mode', function (mode) {
                 if (mode == iwage.MODES.FABRIC) {
                     (typeof onFabricMode == 'function' ? onFabricMode : self[onFabricMode]).call(self);
                 } else {
@@ -278,33 +207,15 @@ iwage.util.listenersForMode = function(onFabricMode, onImageMode) {
 
 iwage.util.hash = iwage.hash = function (s) {
     return s.toLowerCase().replace(/\s*/, '').split('').reduce(
-        function(memo, current, index) {
+        function (memo, current, index) {
             return memo + current.charCodeAt(0) * (index + 1);
         }, 0).toString(16);
 };
 
 
 iwage.services = {
-    imageFromDataUri: function(dataUri, callback) {
-        Ext.Ajax.request({
-            url: '/webbie_image/ajax_base64_to_image/',
-            params: {
-                dataUri: dataUri
-            },
-            success: function(response) {
-                if (response && callback) {
-                    try {
-                        iwage.log('Get: /' + response.responseText);
-                        callback('/' + response.responseText);
-                    } catch(e) {
-                        iwage.error(e);
-                    }
-                } else {
-                    iwage.error('fail: imageFromDataUri');
-                }
-
-            }
-        });
+    imageFromDataUri:function (dataUri, callback) {
+        iwage.warn('NOT IMPLEMENTED!');
     }
 };
 
@@ -312,18 +223,18 @@ iwage.services = {
 /// TODO mover (webbie)
 
 var webbie = {
-    event: {
-        emit: function() {
+    event:{
+        emit:function () {
         }
     },
-    registerFont: function() {
+    registerFont:function () {
         var
             args = arguments,
             old;
 
         try {
             Cufon.registerFont.apply(Cufon, args);
-        } catch(e) {
+        } catch (e) {
             iwage.log(e);
             old = webbie.reloadFonts;
 
@@ -331,18 +242,18 @@ var webbie = {
                 return;
             }
 
-            webbie.reloadFonts = function() {
+            webbie.reloadFonts = function () {
                 Cufon.registerFont.apply(Cufon, args);
                 old();
             };
         }
         try {
             CufonWebbie.registerFont.apply(CufonWebbie, args);
-        } catch(e) {
+        } catch (e) {
             iwage.log(e);
         }
     },
-    getCufonWebbie: function() {
+    getCufonWebbie:function () {
         return CufonWebbie;
     }
 };
