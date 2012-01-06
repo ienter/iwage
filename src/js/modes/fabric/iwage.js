@@ -859,17 +859,4 @@ topo.utils.configurize(topo.Editor.prototype);
     fabricMode.removeActive = function() {
         fabricMode.topo.removeActive();
     };
-
-    fabricMode.preview = function() {
-        // Abrir una ventana al home
-        var w = window.open('/', iwage.uid('_preview'));
-
-        // Modificar el logo
-        $(w).load(function() {
-            $('.webbie-logo', w.document).attr(
-                'src', fabricMode.topo.toDataURI()
-            );
-            w.focus();
-        });
-    };
 })(iwage.mode(iwage.MODES.FABRIC));
